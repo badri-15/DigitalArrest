@@ -36,21 +36,6 @@ so they cannot verify the scam before paying.
 """
 
 from flask import Flask, request, jsonify, render_template
-import io
-import os
-import pytesseract
-from PIL import Image
-
-# Tesseract binary path
-_tess_candidates = [
-    r"E:\ocr\tesseract.exe",
-    r"C:\Program Files\Tesseract-OCR\tesseract.exe",
-    r"C:\Program Files (x86)\Tesseract-OCR\tesseract.exe",
-]
-for _p in _tess_candidates:
-    if os.path.isfile(_p):
-        pytesseract.pytesseract.tesseract_cmd = _p
-        break
 
 app = Flask(__name__)
 
@@ -937,26 +922,6 @@ def test_cases():
             "message": _DEMO_MESSAGES["it-department-scam"],
         },
     ])
-
-
-@app.route("/ocr", methods=["POST"])
-def ocr():
-    if "image" not in request.files:
-        return jsonify({"error": "No image uploaded."}), 400
-    file = request.files["image"]
-    if not file.mimetype.startswith("image/"):
-        return jsonify({"error": "Invalid file type — images only."}), 400
-    data = file.read(5 * 1024 * 1024 + 1)
-    if len(data) > 5 * 1024 * 1024:
-        return jsonify({"error": "Image too large — max 5 MB."}), 413
-    try:
-        img = Image.open(io.BytesIO(data))
-        text = pytesseract.image_to_string(img, lang="eng")
-        return jsonify({"text": text.strip()})
-    except pytesseract.TesseractNotFoundError:
-        return jsonify({"error": "Tesseract OCR is not installed on the server. Install from: github.com/UB-Mannheim/tesseract/wiki"}), 503
-    except Exception:
-        return jsonify({"error": "OCR failed — try a clearer screenshot."}), 500
 
 
 @app.route("/scam/<slug>")

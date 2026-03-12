@@ -44,6 +44,10 @@ header{display:flex;align-items:center;justify-content:space-between;padding:0 4
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 .hdr-link{font-family:var(--mono);font-size:.7rem;color:var(--muted);text-decoration:none;transition:color .2s}
 .hdr-link:hover{color:var(--text)}
+.lang-toggle{font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.5px;
+  color:var(--teal);background:rgba(0,212,170,.07);border:1px solid rgba(0,212,170,.25);
+  border-radius:6px;padding:5px 12px;cursor:pointer;transition:all .18s}
+.lang-toggle:hover{background:rgba(0,212,170,.16)}
 
 /* ── LAYOUT ── */
 main{flex:1;max-width:1100px;margin:0 auto;width:100%;padding:36px 24px 80px;
@@ -99,27 +103,6 @@ textarea#rawMsg{width:100%;min-height:150px;background:rgba(0,0,0,.3);border:1px
   line-height:1.75;resize:vertical;outline:none;transition:border-color .2s}
 textarea#rawMsg:focus{border-color:var(--teal)}
 .char-hint{font-family:var(--mono);font-size:.65rem;color:var(--muted);margin-top:6px;text-align:right}
-
-/* ── OCR UPLOAD ZONE ── */
-.ocr-zone{margin:16px 20px 0;border:1.5px dashed var(--border2);border-radius:12px;
-  padding:22px 16px;text-align:center;cursor:pointer;transition:all .2s;position:relative;
-  background:rgba(0,0,0,.18)}
-.ocr-zone:hover,.ocr-zone.drag{border-color:var(--teal);background:rgba(0,212,170,.04)}
-.ocr-zone input[type=file]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
-.ocr-ico{font-size:1.8rem;margin-bottom:6px}
-.ocr-lbl strong{color:var(--teal);display:block;font-size:.84rem;font-weight:700;margin-bottom:3px}
-.ocr-lbl span{font-family:var(--mono);font-size:.62rem;color:var(--muted)}
-.ocr-status{display:none;margin:10px 20px 0;align-items:center;gap:10px;padding:10px 14px;
-  border-radius:8px;font-size:.83rem;border:1px solid transparent}
-.ocr-status.loading{display:flex;background:rgba(0,212,170,.05);border-color:rgba(0,212,170,.15);color:var(--teal)}
-.ocr-status.ok{display:flex;background:rgba(0,224,150,.06);border-color:rgba(0,224,150,.2);color:var(--green)}
-.ocr-status.err{display:flex;background:rgba(255,61,90,.06);border-color:rgba(255,61,90,.2);color:var(--red)}
-.ocr-prev-wrap{display:none;margin:10px 20px 0}
-.ocr-prev-wrap.show{display:block}
-.ocr-prev{max-width:100%;max-height:140px;border-radius:8px;border:1px solid var(--border2);display:block}
-.ocr-divider{display:flex;align-items:center;gap:12px;padding:14px 20px 0;
-  font-family:var(--mono);font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
-.ocr-divider::before,.ocr-divider::after{content:'';flex:1;height:1px;background:var(--border)}
 
 /* nav buttons inside card */
 .form-nav{display:flex;align-items:center;justify-content:space-between;
@@ -372,7 +355,8 @@ footer a{color:var(--teal);text-decoration:none}
   </a>
   <div class="hdr-right">
     <a class="hdr-link" href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer">cybercrime.gov.in</a>
-    <a class="hdr-link" href="tel:1930">📞 1930</a>
+    <a class="hdr-link" href="tel:1930" data-i18n="nav.helpline">📞 1930</a>
+    <button class="lang-toggle" onclick="daToggleLang()" data-i18n="nav.lang-toggle">हिं</button>
     <div class="live-pill"><div class="live-dot"></div>LIVE</div>
   </div>
 </header>
@@ -383,49 +367,33 @@ footer a{color:var(--teal);text-decoration:none}
 
   <!-- Hero -->
   <div class="hero">
-    <div class="eyebrow">🇮🇳 India Cybercrime Prevention</div>
-    <h1>Got a suspicious call?<br><span class="grad">Report it. We'll detect it.</span></h1>
-    <p>Fill in what happened on the call — who called, what they claimed, what they wanted. Our engine analyses it and tells you if it's a scam.</p>
+    <div class="eyebrow" data-i18n="hero.eyebrow">🇮🇳 India Cybercrime Prevention</div>
+    <h1><span data-i18n="hero.title-line1">Got a suspicious call?</span><br><span class="grad" data-i18n="hero.title-line2">Report it. We'll detect it.</span></h1>
+    <p data-i18n="hero.subtitle">Fill in what happened on the call — who called, what they claimed, what they wanted. Our engine analyses it and tells you if it's a scam.</p>
   </div>
 
   <!-- ═══════ PASTE / SCAN PANEL ═══════ -->
   <div class="form-card" id="rawCard">
     <div class="form-card-header">
-      <div class="form-card-title">Paste Message or Describe the Call</div>
+      <div class="form-card-title" data-i18n="scan.card-title">Paste Message or Describe the Call</div>
     </div>
-
-    <!-- OCR Upload Zone -->
-    <div class="ocr-zone" id="ocrZone">
-      <input type="file" id="ocrFile" accept="image/*"/>
-      <div class="ocr-ico">📷</div>
-      <div class="ocr-lbl">
-        <strong>Upload a Screenshot</strong>
-        <span>Drag &amp; drop or click to pick &nbsp;·&nbsp; PNG, JPG, WEBP &nbsp;·&nbsp; max 5 MB</span>
-      </div>
-    </div>
-    <div class="ocr-prev-wrap" id="ocrPrevWrap">
-      <img class="ocr-prev" id="ocrPrev" src="" alt="screenshot preview"/>
-    </div>
-    <div class="ocr-status" id="ocrStatus"></div>
-    <div class="ocr-divider">or type / paste below</div>
-
     <div class="raw-section">
-      <div class="field-hint" style="margin-bottom:12px">Paste the exact SMS / WhatsApp message you received, or type what the caller said in your own words.</div>
+      <div class="field-hint" style="margin-bottom:12px" data-i18n="scan.field-hint">Paste the exact SMS / WhatsApp message you received, or type what the caller said in your own words.</div>
       <div class="raw-ta-wrap">
-        <textarea id="rawMsg" placeholder="e.g. 'Dear Customer, your SBI KYC has expired. Your account will be deactivated in 24 hours. Click: sbi-kyc-update.xyz/verify'&#10;&#10;Or: 'A person called claiming to be an ED officer. He said my Aadhaar is linked to money laundering and I am under digital arrest...'"></textarea>
+        <textarea id="rawMsg" data-i18n-ph="scan.placeholder" placeholder="e.g. 'Dear Customer, your SBI KYC has expired. Your account will be deactivated in 24 hours. Click: sbi-kyc-update.xyz/verify'&#10;&#10;Or: 'A person called claiming to be an ED officer. He said my Aadhaar is linked to money laundering and I am under digital arrest...'"></textarea>
       </div>
       <div class="char-hint" id="rawCount">0 characters</div>
     </div>
     <div class="form-nav">
       <div></div>
-      <button class="btn-next" onclick="scanRaw()">🔍 Scan Now</button>
+      <button class="btn-next" onclick="scanRaw()" data-i18n="scan.btn">🔍 Scan Now</button>
     </div>
   </div>
 
   <!-- Scanning bar -->
   <div class="scanning-bar" id="scanBar">
     <div class="dots"><span></span><span></span><span></span></div>
-    Analysing your report across 5 scam categories…
+    <span data-i18n="scan.bar">Analysing your report across 5 scam categories…</span>
   </div>
 
   <!-- Result -->
@@ -433,17 +401,17 @@ footer a{color:var(--teal);text-decoration:none}
 
   <!-- Demo test cases -->
   <div class="demo-section">
-    <div class="demo-title">🧪 Demo Test Cases</div>
+    <div class="demo-title" data-i18n="demo.title">🧪 Demo Test Cases</div>
     <div class="demo-grid" id="demoGrid"></div>
   </div>
 
   <!-- Previous Scams History -->
   <div class="history-section" id="historySection">
     <div class="history-hdr">
-      <div class="history-title">🕓 Your Previous Scans</div>
-      <button class="hist-clear-btn" onclick="clearHistory()">Clear</button>
+      <div class="history-title" data-i18n="hist.title">🕓 Your Previous Scans</div>
+      <button class="hist-clear-btn" onclick="clearHistory()" data-i18n="hist.clear">Clear</button>
     </div>
-    <div id="historyList"><div class="hist-empty">No scans yet — your results will appear here.</div></div>
+    <div id="historyList"><div class="hist-empty" data-i18n="hist.empty">No scans yet — your results will appear here.</div></div>
   </div>
 
 </div><!-- /left -->
@@ -452,43 +420,43 @@ footer a{color:var(--teal);text-decoration:none}
 <div class="right">
   <div class="a-card">
     <div class="a-hdr">
-      <div class="a-title">📊 Live Analytics</div>
-      <div class="a-badge">TODAY</div>
+      <div class="a-title" data-i18n="analytics.title">📊 Live Analytics</div>
+      <div class="a-badge" data-i18n="analytics.badge">TODAY</div>
     </div>
     <div class="kpi-grid">
-      <div class="kpi"><div class="kpi-n y" id="kpiD">—</div><div class="kpi-l">Scams Detected</div></div>
-      <div class="kpi"><div class="kpi-n g" id="kpiM">—</div><div class="kpi-l">Money Protected</div></div>
-      <div class="kpi"><div class="kpi-n" id="kpiU">—</div><div class="kpi-l">Users Warned</div></div>
-      <div class="kpi"><div class="kpi-n y">64%</div><div class="kpi-l">Most: Digital Arrest</div></div>
+      <div class="kpi"><div class="kpi-n y" id="kpiD">—</div><div class="kpi-l" data-i18n="kpi.detected">Scams Detected</div></div>
+      <div class="kpi"><div class="kpi-n g" id="kpiM">—</div><div class="kpi-l" data-i18n="kpi.money">Money Protected</div></div>
+      <div class="kpi"><div class="kpi-n" id="kpiU">—</div><div class="kpi-l" data-i18n="kpi.users">Users Warned</div></div>
+      <div class="kpi"><div class="kpi-n y">64%</div><div class="kpi-l" data-i18n="kpi.top">Most: Digital Arrest</div></div>
     </div>
     <div class="bd">
-      <div class="bd-t">Scam Type Breakdown</div>
+      <div class="bd-t" data-i18n="bd.title">Scam Type Breakdown</div>
       <div class="bd-rows" id="bdRows"></div>
     </div>
     <div class="lf">
-      <div class="lf-hdr"><div class="lf-t">Recent Detections</div></div>
+      <div class="lf-hdr"><div class="lf-t" data-i18n="lf.title">Recent Detections</div></div>
       <div id="lfItems"></div>
     </div>
   </div>
 
   <div class="a-card">
     <div class="a-hdr danger">
-      <div class="a-title">🆘 Need Help Now?</div>
+      <div class="a-title" data-i18n="hl.title">🆘 Need Help Now?</div>
     </div>
     <div class="emergency-body">
       <a class="hl-btn call" href="tel:1930">
         <span class="hl-btn-icon">📞</span>
-        <div><div class="hl-btn-main">Call 1930</div><div class="hl-btn-sub">Cyber Crime Helpline · Free · 24×7</div></div>
+        <div><div class="hl-btn-main" data-i18n="hl.call-main">Call 1930</div><div class="hl-btn-sub" data-i18n="hl.call-sub">Cyber Crime Helpline · Free · 24×7</div></div>
       </a>
       <a class="hl-btn report" href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer">
         <span class="hl-btn-icon">🌐</span>
-        <div><div class="hl-btn-main">Report at cybercrime.gov.in</div><div class="hl-btn-sub">Official National Cyber Crime Portal</div></div>
+        <div><div class="hl-btn-main" data-i18n="hl.web-main">Report at cybercrime.gov.in</div><div class="hl-btn-sub" data-i18n="hl.web-sub">Official National Cyber Crime Portal</div></div>
       </a>
       <a class="hl-btn cert" href="https://cert-in.org.in" target="_blank" rel="noopener noreferrer">
         <span class="hl-btn-icon">🔒</span>
-        <div><div class="hl-btn-main">CERT-In Portal</div><div class="hl-btn-sub">cert-in.org.in · Cyber Security Incidents</div></div>
+        <div><div class="hl-btn-main" data-i18n="hl.cert-main">CERT-In Portal</div><div class="hl-btn-sub" data-i18n="hl.cert-sub">cert-in.org.in · Cyber Security Incidents</div></div>
       </a>
-      <div class="hl-note">Free official government services. Never pay anyone claiming to be from a helpline.</div>
+      <div class="hl-note" data-i18n="hl.note">Free official government services. Never pay anyone claiming to be from a helpline.</div>
     </div>
   </div>
 
@@ -497,13 +465,14 @@ footer a{color:var(--teal);text-decoration:none}
 </main>
 
 <footer>
-  Built for Hackathon 2025 &nbsp;·&nbsp;
-  Helpline: <a href="tel:1930">1930</a> &nbsp;·&nbsp;
+  <span data-i18n="footer.text">Built for Hackathon 2025 · Helpline:</span>
+  <a href="tel:1930">1930</a> &nbsp;·&nbsp;
   <a href="https://cybercrime.gov.in" target="_blank">cybercrime.gov.in</a> &nbsp;·&nbsp;
   <a href="https://cert-in.org.in" target="_blank">cert-in.org.in</a>
 </footer>
 </div>
 
+<script src="/static/i18n.js"></script>
 <script>
 async function scanRaw() {
   const msg = document.getElementById('rawMsg').value.trim();
@@ -725,70 +694,6 @@ async function loadDemos() {
     ).join('');
   } catch(e) { console.warn('Demos unavailable'); }
 }
-
-// ══════════════════════════════════════
-//  OCR — screenshot upload
-// ══════════════════════════════════════
-(function() {
-  const zone      = document.getElementById('ocrZone');
-  const fileInput = document.getElementById('ocrFile');
-  const prevWrap  = document.getElementById('ocrPrevWrap');
-  const prev      = document.getElementById('ocrPrev');
-  const status    = document.getElementById('ocrStatus');
-
-  function setStatus(cls, icon, msg) {
-    status.className = 'ocr-status ' + cls;
-    status.innerHTML = `<span>${icon}</span><span>${msg}</span>`;
-  }
-
-  async function processFile(file) {
-    if (!file) return;
-    if (!file.type.startsWith('image/')) {
-      setStatus('err', '⚠', 'Please upload an image file (PNG, JPG, WEBP).');
-      return;
-    }
-    if (file.size > 5 * 1024 * 1024) {
-      setStatus('err', '⚠', 'Image too large — max 5 MB.');
-      return;
-    }
-    // Show preview
-    if (prev.src && prev.src.startsWith('blob:')) URL.revokeObjectURL(prev.src);
-    prev.src = URL.createObjectURL(file);
-    prevWrap.classList.add('show');
-    setStatus('loading', '⏳', 'Extracting text from screenshot…');
-
-    const fd = new FormData();
-    fd.append('image', file);
-    try {
-      const res  = await fetch('/ocr', { method: 'POST', body: fd });
-      const data = await res.json();
-      if (!res.ok || data.error) {
-        setStatus('err', '⚠', data.error || 'OCR failed — try a clearer image.');
-        return;
-      }
-      const txt = (data.text || '').trim();
-      if (!txt) {
-        setStatus('err', '⚠', 'No text detected — try a higher-resolution screenshot.');
-        return;
-      }
-      document.getElementById('rawMsg').value = txt;
-      document.getElementById('rawCount').textContent = `${txt.length} characters`;
-      document.getElementById('rawCard').scrollIntoView({ behavior: 'smooth' });
-      setStatus('ok', '✓', `Extracted ${txt.length} characters — ready to scan.`);
-    } catch (e) {
-      setStatus('err', '⚠', 'Network error — check the server is running.');
-    }
-  }
-
-  fileInput.addEventListener('change', e => processFile(e.target.files[0]));
-  zone.addEventListener('dragover',  e => { e.preventDefault(); zone.classList.add('drag'); });
-  zone.addEventListener('dragleave', ()  => zone.classList.remove('drag'));
-  zone.addEventListener('drop', e => {
-    e.preventDefault();
-    zone.classList.remove('drag');
-    processFile(e.dataTransfer.files[0]);
-  });
-})();
 
 // ══════════════════════════════════════
 //  SCAN HISTORY  (localStorage)

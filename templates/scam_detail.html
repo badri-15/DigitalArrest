@@ -36,6 +36,10 @@ header{display:flex;align-items:center;justify-content:space-between;padding:0 4
   font-family:var(--mono);font-size:.72rem;transition:color .2s;padding:6px 12px;
   border:1px solid var(--border);border-radius:6px}
 .back-link:hover{color:var(--teal);border-color:rgba(0,212,170,.3)}
+.lang-toggle{font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.5px;
+  color:var(--teal);background:rgba(0,212,170,.07);border:1px solid rgba(0,212,170,.25);
+  border-radius:6px;padding:5px 12px;cursor:pointer;transition:all .18s}
+.lang-toggle:hover{background:rgba(0,212,170,.16)}
 .hdr-hl{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.65rem;
   color:var(--red);padding:5px 12px;border:1px solid rgba(255,61,90,.3);border-radius:4px;
   background:rgba(255,61,90,.06);text-decoration:none;transition:background .2s}
@@ -204,17 +208,18 @@ footer a{color:var(--teal);text-decoration:none}
     <div class="logo-shield">🛡️</div>
     <div class="logo-name">Digital<span>Armour</span></div>
   </a>
-  <a class="back-link" href="/">← Back to Scanner</a>
-  <a class="hdr-hl" href="tel:1930">📞 1930</a>
+  <a class="back-link" href="/" data-i18n="detail.back">← Back to Scanner</a>
+  <button class="lang-toggle" onclick="daToggleLang()" data-i18n="nav.lang-toggle">हिं</button>
+  <a class="hdr-hl" href="tel:1930" data-i18n="nav.helpline">📞 1930</a>
 </header>
 
 <div class="page">
 
   <!-- BREADCRUMB -->
   <div class="breadcrumb">
-    <a href="/">DigitalArmour</a>
+    <a href="/" data-i18n="detail.breadcrumb1">DigitalArmour</a>
     <span class="sep">›</span>
-    <span>Scam Guide</span>
+    <span data-i18n="detail.breadcrumb2">Scam Guide</span>
     <span class="sep">›</span>
     <span>{{ scam_name }}</span>
   </div>
@@ -225,9 +230,9 @@ footer a{color:var(--teal);text-decoration:none}
       <div class="hero-top">
         <div class="hero-ico">{{ scam_icon }}</div>
         <div class="hero-meta">
-          <div class="sev-pill">⚠ {{ severity }} SEVERITY</div>
+          <div class="sev-pill">⚠ {{ severity }} <span data-i18n="detail.sev-suffix">SEVERITY</span></div>
           <div class="hero-name">{{ scam_name }}</div>
-          <div class="hero-tag">India Cyber Crime — Active Scam Type</div>
+          <div class="hero-tag" data-i18n="detail.country-tag">India Cyber Crime — Active Scam Type</div>
         </div>
       </div>
       <p class="hero-desc">{{ explanation }}</p>
@@ -237,26 +242,26 @@ footer a{color:var(--teal);text-decoration:none}
   <!-- KEY FACTS -->
   <div class="facts-grid">
     <div class="fact-card">
-      <div class="fact-lbl">Threat Level</div>
+      <div class="fact-lbl" data-i18n="detail.fact-threat">Threat Level</div>
       <div class="fact-val {% if severity == 'CRITICAL' %}red{% elif severity == 'HIGH' %}orange{% else %}yellow{% endif %}">{{ severity }}</div>
     </div>
     <div class="fact-card">
-      <div class="fact-lbl">Detection Keywords</div>
-      <div class="fact-val teal">{{ keywords | length }} phrases</div>
+      <div class="fact-lbl" data-i18n="detail.fact-kw">Detection Keywords</div>
+      <div class="fact-val teal">{{ keywords | length }} <span data-i18n="detail.fact-phrases">phrases</span></div>
     </div>
     <div class="fact-card">
-      <div class="fact-lbl">Protective Steps</div>
-      <div class="fact-val teal">{{ actions | length }} actions</div>
+      <div class="fact-lbl" data-i18n="detail.fact-steps">Protective Steps</div>
+      <div class="fact-val teal">{{ actions | length }} <span data-i18n="detail.fact-actions">actions</span></div>
     </div>
   </div>
 
   <!-- SCAN CTA -->
   <div class="scan-cta">
     <div class="cta-text">
-      <strong>Got a suspicious message related to this?</strong>
-      <span>Paste it in the scanner — our engine analyses it in seconds.</span>
+      <strong data-i18n="detail.cta-strong">Got a suspicious message related to this?</strong>
+      <span data-i18n="detail.cta-span">Paste it in the scanner — our engine analyses it in seconds.</span>
     </div>
-    <a class="cta-btn" href="/">🔍 Scan a Message</a>
+    <a class="cta-btn" href="/" data-i18n="detail.cta-btn">🔍 Scan a Message</a>
   </div>
 
   <!-- TRIGGER KEYWORDS -->
@@ -264,12 +269,12 @@ footer a{color:var(--teal);text-decoration:none}
     <div class="sec-head">
       <span class="sec-ico">🔑</span>
       <div>
-        <div class="sec-lbl">Warning Signals</div>
-        <div class="sec-ttl">Trigger Phrases &amp; Threat Weights</div>
+        <div class="sec-lbl" data-i18n="detail.kw-lbl">Warning Signals</div>
+        <div class="sec-ttl" data-i18n="detail.kw-ttl">Trigger Phrases &amp; Threat Weights</div>
       </div>
     </div>
     <div class="sec-body">
-      <p class="kw-hint">
+      <p class="kw-hint" data-i18n="detail.kw-hint">
         Each phrase is weighted <strong>1–10</strong> based on how exclusively it appears in scam messages.
         Weight 10 = almost never used in legitimate communication.
       </p>
@@ -301,14 +306,14 @@ footer a{color:var(--teal);text-decoration:none}
     <div class="sec-head">
       <span class="sec-ico">📱</span>
       <div>
-        <div class="sec-lbl">Real Scam Example</div>
+        <div class="sec-lbl" data-i18n="detail.eg-lbl">Real Scam Example</div>
         <div class="sec-ttl">{{ demo_label }}</div>
       </div>
     </div>
     <div class="sec-body">
-      <div class="msg-label">Typical scam message</div>
+      <div class="msg-label" data-i18n="detail.eg-msg-lbl">Typical scam message</div>
       <div class="msg-bubble">{{ demo_message }}</div>
-      <div class="msg-warning">⚠ This is an example for awareness only — do not respond to messages like this.</div>
+      <div class="msg-warning" data-i18n="detail.eg-warn">⚠ This is an example for awareness only — do not respond to messages like this.</div>
     </div>
   </div>
   {% endif %}
@@ -318,8 +323,8 @@ footer a{color:var(--teal);text-decoration:none}
     <div class="sec-head">
       <span class="sec-ico">✅</span>
       <div>
-        <div class="sec-lbl">Immediate Actions</div>
-        <div class="sec-ttl">What You Must Do Right Now</div>
+        <div class="sec-lbl" data-i18n="detail.act-lbl">Immediate Actions</div>
+        <div class="sec-ttl" data-i18n="detail.act-ttl">What You Must Do Right Now</div>
       </div>
     </div>
     <div class="sec-body">
@@ -339,8 +344,8 @@ footer a{color:var(--teal);text-decoration:none}
     <div class="sec-head">
       <span class="sec-ico">🆘</span>
       <div>
-        <div class="sec-lbl">Official Government Channels</div>
-        <div class="sec-ttl">Report This Scam — It's Free</div>
+        <div class="sec-lbl" data-i18n="detail.rpt-lbl">Official Government Channels</div>
+        <div class="sec-ttl" data-i18n="detail.rpt-ttl">Report This Scam — It's Free</div>
       </div>
     </div>
     <div class="sec-body">
@@ -365,11 +370,12 @@ footer a{color:var(--teal);text-decoration:none}
 </div><!-- /page -->
 
 <footer>
-  <a href="/">← Back to DigitalArmour Scanner</a> &nbsp;·&nbsp;
-  Helpline: <a href="tel:1930">1930</a> &nbsp;·&nbsp;
+  <a href="/" data-i18n="footer.back">← Back to DigitalArmour Scanner</a> &nbsp;·&nbsp;
+  <span data-i18n="footer.helpline">Helpline:</span> <a href="tel:1930">1930</a> &nbsp;·&nbsp;
   <a href="https://cybercrime.gov.in" target="_blank">cybercrime.gov.in</a>
 </footer>
 
+<script src="/static/i18n.js"></script>
 <script>
 // Animate keyword weight bars on load
 window.addEventListener('load', () => {
