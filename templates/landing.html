@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DigitalArmour</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Animation Library -->
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Outfit',sans-serif;
+background:#070b12;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+height:100vh;
+text-align:center;
+overflow:hidden;
+}
+
+/* Cyber grid background */
+
+body::before{
+content:'';
+position:absolute;
+inset:0;
+background-image:
+linear-gradient(rgba(0,212,170,.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(0,212,170,.05) 1px, transparent 1px);
+background-size:50px 50px;
+z-index:0;
+}
+
+/* container */
+
+.container{
+position:relative;
+z-index:1;
+max-width:760px;
+padding:40px;
+}
+
+/* badge */
+
+.badge{
+display:inline-block;
+padding:6px 14px;
+border-radius:20px;
+background:rgba(0,212,170,0.12);
+border:1px solid rgba(0,212,170,0.3);
+font-size:12px;
+color:#00d4aa;
+margin-bottom:18px;
+letter-spacing:.5px;
+}
+
+/* title */
+
+h1{
+font-size:2.8rem;
+line-height:1.2;
+margin-bottom:14px;
+font-weight:800;
+}
+
+.highlight{
+background:linear-gradient(90deg,#00d4aa,#3da8ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* description */
+
+p{
+color:#9aa6b2;
+font-size:1rem;
+line-height:1.7;
+max-width:600px;
+margin:auto;
+}
+
+/* features */
+
+.features{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:12px;
+margin-top:24px;
+}
+
+.features span{
+padding:8px 14px;
+border:1px solid #1e2a38;
+border-radius:20px;
+font-size:13px;
+color:#b8c4d3;
+}
+
+/* button */
+
+.start-btn{
+margin-top:34px;
+padding:14px 36px;
+font-size:1rem;
+font-weight:600;
+border:none;
+border-radius:10px;
+background:#00d4aa;
+cursor:pointer;
+transition:.25s;
+}
+
+.start-btn:hover{
+background:#00b896;
+transform:translateY(-3px);
+box-shadow:0 6px 18px rgba(0,212,170,.35);
+}
+
+/* floating motion graphics */
+
+.motion-bg{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:0;
+}
+
+.motion-bg .dot{
+  position:absolute;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:rgba(0,212,170,0.7);
+  box-shadow:0 0 18px rgba(0,212,170,.35);
+  opacity:0;
+  animation: floatDot 8s linear infinite;
+}
+
+.motion-bg .dot:nth-child(1){left:8%; animation-delay:-1.2s; animation-duration:7.5s;}
+.motion-bg .dot:nth-child(2){left:22%; animation-delay:-2.3s; animation-duration:9s;}
+.motion-bg .dot:nth-child(3){left:35%; animation-delay:-3.1s; animation-duration:8.2s;}
+.motion-bg .dot:nth-child(4){left:50%; animation-delay:-1.6s; animation-duration:7.8s;}
+.motion-bg .dot:nth-child(5){left:65%; animation-delay:-2.8s; animation-duration:9.4s;}
+.motion-bg .dot:nth-child(6){left:78%; animation-delay:-3.7s; animation-duration:8.6s;}
+.motion-bg .dot:nth-child(7){left:90%; animation-delay:-2.0s; animation-duration:8.9s;}
+
+@keyframes floatDot {
+  0%{transform:translateY(0) scale(1);opacity:0;}
+  10%{opacity:.5;}
+  50%{transform:translateY(-450px) scale(1.6);opacity:1;}
+  90%{opacity:.2;}
+  100%{transform:translateY(-580px) scale(1.8);opacity:0;}
+}
+
+/* footer */
+
+.footer{
+position:absolute;
+bottom:20px;
+width:100%;
+text-align:center;
+font-size:12px;
+color:#6c7a89;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="motion-bg">
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+</div>
+
+<div class="container">
+
+<div class="badge" data-aos="fade-down">
+🇮🇳 India Cybercrime Protection
+</div>
+
+<h1 data-aos="fade-up">
+Apps spot numbers.<br>
+<span class="highlight">DigitalArmour detects the scam script.</span>
+</h1>
+
+<p data-aos="fade-up" data-aos-delay="200">
+AI powered scam pattern detection for digital arrest fraud,
+KYC scams, fake bank calls and government impersonation.
+Stay protected from modern cybercrime.
+</p>
+
+<div class="features" data-aos="fade-up" data-aos-delay="400">
+<span>⚡ AI Scam Detection</span>
+<span>🧠 Manipulation Analysis</span>
+<span>🔍 Script Pattern Scan</span>
+<span>🛡 Cybercrime Awareness</span>
+</div>
+
+<button class="start-btn" onclick="startDetector()" data-aos="zoom-in" data-aos-delay="600">
+Start Scam Detection
+</button>
+
+</div>
+
+<div class="footer">
+Report cybercrime: 1930 | cybercrime.gov.in
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+
+AOS.init({
+duration:1000,
+once:true
+});
+
+function startDetector(){
+window.location.href="/detector";
+}
+
+</script>
+
+</body>
+</html>
