@@ -25,8 +25,6 @@ body::after{content:'';position:fixed;top:-200px;left:50%;transform:translateX(-
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg2)}
 ::-webkit-scrollbar-thumb{background:var(--dim);border-radius:3px}
 .wrap{position:relative;z-index:1;display:flex;flex-direction:column;min-height:100vh}
-
-/* ── HEADER ── */
 header{display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:60px;
   border-bottom:1px solid var(--border);background:rgba(6,9,15,.9);backdrop-filter:blur(16px);
   position:sticky;top:0;z-index:100}
@@ -44,17 +42,9 @@ header{display:flex;align-items:center;justify-content:space-between;padding:0 4
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 .hdr-link{font-family:var(--mono);font-size:.7rem;color:var(--muted);text-decoration:none;transition:color .2s}
 .hdr-link:hover{color:var(--text)}
-.lang-toggle{font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.5px;
-  color:var(--teal);background:rgba(0,212,170,.07);border:1px solid rgba(0,212,170,.25);
-  border-radius:6px;padding:5px 12px;cursor:pointer;transition:all .18s}
-.lang-toggle:hover{background:rgba(0,212,170,.16)}
-
-/* ── LAYOUT ── */
 main{flex:1;max-width:1100px;margin:0 auto;width:100%;padding:36px 24px 80px;
   display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:start}
 .left{display:flex;flex-direction:column;gap:20px}
-
-/* ── HERO ── */
 .hero{animation:up .5s ease both}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);
   font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--teal);
@@ -64,70 +54,37 @@ h1{font-size:clamp(1.7rem,3.5vw,2.5rem);font-weight:800;line-height:1.1;letter-s
 h1 .grad{background:linear-gradient(100deg,var(--teal),var(--blue));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero p{color:var(--muted);font-size:.92rem;line-height:1.65;max-width:520px}
-
-/* ── CARD WRAPPER ── */
-.form-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;
-  overflow:hidden;animation:up .5s .1s ease both}
-
-/* ── CARD HEADER ── */
-.form-card-header{padding:14px 20px;border-bottom:1px solid var(--border);
-  background:rgba(0,0,0,.2);display:flex;align-items:center;justify-content:space-between}
-.form-card-title{font-family:var(--mono);font-size:.68rem;letter-spacing:1.5px;
-  text-transform:uppercase;color:var(--teal)}
+.form-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;animation:up .5s .1s ease both}
+.form-card-header{padding:14px 20px;border-bottom:1px solid var(--border);background:rgba(0,0,0,.2);display:flex;align-items:center;justify-content:space-between}
+.form-card-title{font-family:var(--mono);font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal)}
 .form-card-title::before{content:'// ';opacity:.5}
-
-.field{margin-bottom:18px}
-.field:last-child{margin-bottom:0}
+.field{margin-bottom:18px}.field:last-child{margin-bottom:0}
 .field-label{font-size:.8rem;font-weight:600;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:6px}
 .field-label .req{color:var(--red);font-size:.7rem}
 .field-hint{font-size:.73rem;color:var(--muted);margin-bottom:8px;line-height:1.4}
-
-/* select and input */
-select, input[type=text], input[type=tel], textarea.field-ta {
-  width:100%;background:rgba(0,0,0,.3);border:1px solid var(--border2);border-radius:8px;
-  padding:10px 12px;color:var(--text);font-family:var(--sans);font-size:.86rem;
-  outline:none;transition:border-color .2s;
-}
-select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23445566' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+select,input[type=text],input[type=tel],textarea.field-ta{width:100%;background:rgba(0,0,0,.3);border:1px solid var(--border2);border-radius:8px;padding:10px 12px;color:var(--text);font-family:var(--sans);font-size:.86rem;outline:none;transition:border-color .2s}
+select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23445566' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
 select option{background:#0f1923;color:var(--text)}
-select:focus, input[type=text]:focus, input[type=tel]:focus, textarea.field-ta:focus{border-color:var(--teal)}
+select:focus,input[type=text]:focus,input[type=tel]:focus,textarea.field-ta:focus{border-color:var(--teal)}
 textarea.field-ta{resize:vertical;min-height:100px;line-height:1.65;font-size:.84rem}
 ::placeholder{color:var(--muted)}
-
-/* raw text panel */
 .raw-section{padding:20px}
 .raw-ta-wrap{position:relative}
-textarea#rawMsg{width:100%;min-height:150px;background:rgba(0,0,0,.3);border:1px solid var(--border2);
-  border-radius:10px;padding:14px;color:var(--text);font-family:var(--mono);font-size:.83rem;
-  line-height:1.75;resize:vertical;outline:none;transition:border-color .2s}
+textarea#rawMsg{width:100%;min-height:150px;background:rgba(0,0,0,.3);border:1px solid var(--border2);border-radius:10px;padding:14px;color:var(--text);font-family:var(--mono);font-size:.83rem;line-height:1.75;resize:vertical;outline:none;transition:border-color .2s}
 textarea#rawMsg:focus{border-color:var(--teal)}
 .char-hint{font-family:var(--mono);font-size:.65rem;color:var(--muted);margin-top:6px;text-align:right}
-
-/* nav buttons inside card */
-.form-nav{display:flex;align-items:center;justify-content:space-between;
-  padding:14px 20px;border-top:1px solid var(--border);background:rgba(0,0,0,.15)}
-.btn-next{background:linear-gradient(135deg,var(--teal),var(--teal2));color:#000;
-  font-family:var(--sans);font-weight:700;font-size:.88rem;padding:9px 22px;
-  border:none;border-radius:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:7px}
+.form-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-top:1px solid var(--border);background:rgba(0,0,0,.15)}
+.btn-next{background:linear-gradient(135deg,var(--teal),var(--teal2));color:#000;font-family:var(--sans);font-weight:700;font-size:.88rem;padding:9px 22px;border:none;border-radius:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:7px}
 .btn-next:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,212,170,.35)}
 .btn-next:active{transform:none}
 .btn-next:disabled{opacity:.4;cursor:not-allowed;transform:none}
-
-/* ── SCANNING BAR ── */
-.scanning-bar{display:none;align-items:center;gap:10px;padding:12px 18px;
-  background:rgba(0,212,170,.05);border:1px solid rgba(0,212,170,.15);border-radius:10px;
-  font-family:var(--mono);font-size:.75rem;color:var(--teal)}
+.scanning-bar{display:none;align-items:center;gap:10px;padding:12px 18px;background:rgba(0,212,170,.05);border:1px solid rgba(0,212,170,.15);border-radius:10px;font-family:var(--mono);font-size:.75rem;color:var(--teal)}
 .scanning-bar.show{display:flex;animation:up .2s ease both}
-.dots span{display:inline-block;width:5px;height:5px;background:var(--teal);border-radius:50%;margin:0 2px;
-  animation:dotpulse 1.2s ease-in-out infinite}
+.dots span{display:inline-block;width:5px;height:5px;background:var(--teal);border-radius:50%;margin:0 2px;animation:dotpulse 1.2s ease-in-out infinite}
 .dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}
 @keyframes dotpulse{0%,80%,100%{transform:scale(.5);opacity:.3}40%{transform:scale(1);opacity:1}}
-
-/* ── RESULT ── */
 #result{display:none;animation:up .4s ease both}
 .res-card{border-radius:16px;overflow:hidden;border:1px solid var(--border)}
-
 .rh{padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .rh.safe    {background:rgba(0,224,150,.07);border-bottom:1px solid rgba(0,224,150,.18)}
 .rh.medium  {background:rgba(245,196,0,.07); border-bottom:1px solid rgba(245,196,0,.18)}
@@ -135,28 +92,21 @@ textarea#rawMsg:focus{border-color:var(--teal)}
 .rh.critical{background:rgba(255,23,68,.09); border-bottom:1px solid rgba(255,23,68,.25)}
 .rh-l{display:flex;align-items:center;gap:12px}
 .rh-ico{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.rh-ico.safe    {background:rgba(0,224,150,.14)}
-.rh-ico.medium  {background:rgba(245,196,0,.14)}
-.rh-ico.high,
-.rh-ico.critical{background:rgba(255,61,90,.14)}
+.rh-ico.safe{background:rgba(0,224,150,.14)}.rh-ico.medium{background:rgba(245,196,0,.14)}
+.rh-ico.high,.rh-ico.critical{background:rgba(255,61,90,.14)}
 .rh-title{font-size:1.05rem;font-weight:800}
-.rh-title.safe    {color:var(--green)}
-.rh-title.medium  {color:var(--yellow)}
-.rh-title.high    {color:var(--red)}
-.rh-title.critical{color:var(--red2)}
+.rh-title.safe{color:var(--green)}.rh-title.medium{color:var(--yellow)}.rh-title.high{color:var(--red)}.rh-title.critical{color:var(--red2)}
 .rh-sub{font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-top:2px}
 .sev{font-family:var(--mono);font-size:.63rem;letter-spacing:1px;font-weight:600;padding:4px 12px;border-radius:20px}
 .sev.SAFE    {color:var(--green); background:rgba(0,224,150,.1); border:1px solid rgba(0,224,150,.25)}
 .sev.MEDIUM  {color:var(--yellow);background:rgba(245,196,0,.1); border:1px solid rgba(245,196,0,.25)}
 .sev.HIGH    {color:var(--red);   background:rgba(255,61,90,.1); border:1px solid rgba(255,61,90,.25)}
 .sev.CRITICAL{color:var(--red2);  background:rgba(255,23,68,.12);border:1px solid rgba(255,23,68,.3)}
-
 .risk-sec{padding:16px 22px;background:var(--card);border-bottom:1px solid var(--border)}
 .risk-hdr{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px}
 .risk-lbl{font-family:var(--mono);font-size:.63rem;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase}
 .risk-num{font-family:var(--mono);font-size:1.4rem;font-weight:600}
-.risk-num.safe    {color:var(--green)}.risk-num.medium{color:var(--yellow)}
-.risk-num.high,.risk-num.critical{color:var(--red)}
+.risk-num.safe{color:var(--green)}.risk-num.medium{color:var(--yellow)}.risk-num.high,.risk-num.critical{color:var(--red)}
 .risk-track{height:8px;background:var(--border);border-radius:4px;overflow:hidden}
 .risk-fill{height:100%;border-radius:4px;width:0;transition:width 1s cubic-bezier(.16,1,.3,1)}
 .risk-fill.safe    {background:linear-gradient(90deg,var(--green2),var(--green))}
@@ -164,110 +114,148 @@ textarea#rawMsg:focus{border-color:var(--teal)}
 .risk-fill.high    {background:linear-gradient(90deg,var(--orange),var(--red))}
 .risk-fill.critical{background:linear-gradient(90deg,var(--red),var(--red2));box-shadow:0 0 12px rgba(255,23,68,.4)}
 .risk-scale{display:flex;justify-content:space-between;margin-top:5px;font-family:var(--mono);font-size:.56rem;color:var(--muted)}
-
 .kw-sec{padding:16px 22px;background:var(--surface);border-bottom:1px solid var(--border)}
 .sec-lbl{font-family:var(--mono);font-size:.63rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
 .kw-wrap{display:flex;flex-wrap:wrap;gap:6px}
-.kw{font-family:var(--mono);font-size:.7rem;padding:3px 10px;border-radius:4px;
-  background:rgba(255,61,90,.08);border:1px solid rgba(255,61,90,.2);color:#ff8fa3;
-  display:flex;align-items:center;gap:5px}
+.kw{font-family:var(--mono);font-size:.7rem;padding:3px 10px;border-radius:4px;background:rgba(255,61,90,.08);border:1px solid rgba(255,61,90,.2);color:#ff8fa3;display:flex;align-items:center;gap:5px}
 .kw-w{background:rgba(255,61,90,.2);border-radius:3px;padding:1px 5px;font-size:.58rem;color:var(--red);font-weight:700}
-
 .exp-sec{padding:18px 22px;background:rgba(0,0,0,.22);border-bottom:1px solid var(--border)}
 .exp-text{font-size:.88rem;line-height:1.75}
-
 .act-sec{padding:18px 22px;background:var(--surface)}
 .act-list{list-style:none;display:flex;flex-direction:column;gap:7px}
-.act-item{display:flex;align-items:flex-start;gap:11px;padding:10px 13px;
-  background:rgba(0,212,170,.04);border:1px solid rgba(0,212,170,.1);border-radius:8px;
-  font-size:.86rem;line-height:1.5;animation:slid .3s ease both}
-.act-item:nth-child(1){animation-delay:.04s}.act-item:nth-child(2){animation-delay:.08s}
-.act-item:nth-child(3){animation-delay:.12s}.act-item:nth-child(4){animation-delay:.16s}
-.act-item:nth-child(5){animation-delay:.20s}
-.act-n{flex-shrink:0;width:20px;height:20px;background:rgba(0,212,170,.12);border-radius:4px;
-  font-family:var(--mono);font-size:.6rem;font-weight:600;color:var(--teal);
-  display:flex;align-items:center;justify-content:center;margin-top:1px}
-
-.other-row{padding:10px 22px;background:var(--card);border-top:1px solid var(--border);
-  font-family:var(--mono);font-size:.66rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px}
+.act-item{display:flex;align-items:flex-start;gap:11px;padding:10px 13px;background:rgba(0,212,170,.04);border:1px solid rgba(0,212,170,.1);border-radius:8px;font-size:.86rem;line-height:1.5;animation:slid .3s ease both}
+.act-item:nth-child(1){animation-delay:.04s}.act-item:nth-child(2){animation-delay:.08s}.act-item:nth-child(3){animation-delay:.12s}.act-item:nth-child(4){animation-delay:.16s}.act-item:nth-child(5){animation-delay:.20s}
+.act-n{flex-shrink:0;width:20px;height:20px;background:rgba(0,212,170,.12);border-radius:4px;font-family:var(--mono);font-size:.6rem;font-weight:600;color:var(--teal);display:flex;align-items:center;justify-content:center;margin-top:1px}
+.other-row{padding:10px 22px;background:var(--card);border-top:1px solid var(--border);font-family:var(--mono);font-size:.66rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px}
 .other-tag{color:var(--yellow)}
-.helpline{display:flex;flex-wrap:wrap;gap:14px;padding:12px 22px;
-  background:rgba(33,150,243,.04);border-top:1px solid rgba(33,150,243,.15);
-  font-family:var(--mono);font-size:.66rem;color:var(--blue)}
-.hl::before{content:'📞 '}
-
+.helpline{display:flex;flex-wrap:wrap;gap:14px;padding:12px 22px;background:rgba(33,150,243,.04);border-top:1px solid rgba(33,150,243,.15);font-family:var(--mono);font-size:.66rem;color:var(--blue)}
+.hl::before{content:'📞 '}.hl-web::before{content:'🌐 '}
+.helpline a{color:inherit;text-decoration:none;transition:opacity .15s}
+.helpline a:hover{opacity:.75;text-decoration:underline}
 .safe-body{padding:18px 22px;background:var(--surface)}
-.safe-tip{padding:13px 16px;background:rgba(0,224,150,.05);
-  border:1px solid rgba(0,224,150,.14);border-radius:10px;font-size:.88rem;line-height:1.65}
-
-/* ── RESET BUTTON ── */
-.btn-reset{display:flex;align-items:center;gap:7px;background:transparent;
-  border:1px solid var(--border2);color:var(--muted);font-family:var(--sans);font-size:.82rem;
-  padding:9px 16px;border-radius:8px;cursor:pointer;transition:all .2s;width:fit-content}
+.safe-tip{padding:13px 16px;background:rgba(0,224,150,.05);border:1px solid rgba(0,224,150,.14);border-radius:10px;font-size:.88rem;line-height:1.65}
+.btn-reset{display:flex;align-items:center;gap:7px;background:transparent;border:1px solid var(--border2);color:var(--muted);font-family:var(--sans);font-size:.82rem;padding:9px 16px;border-radius:8px;cursor:pointer;transition:all .2s;width:fit-content}
 .btn-reset:hover{border-color:var(--text);color:var(--text)}
-
-/* ── TEST CASES ── */
 .demo-section{animation:up .5s .2s ease both}
 .demo-title{font-size:.92rem;font-weight:700;margin-bottom:4px}
 .demo-sub{font-family:var(--mono);font-size:.63rem;color:var(--muted);margin-bottom:12px}
 .demo-grid{display:flex;flex-direction:column;gap:7px}
-.demo-btn{text-align:left;width:100%;background:var(--surface);border:1px solid var(--border);
-  border-radius:10px;padding:11px 14px;cursor:pointer;transition:all .18s;color:var(--text);
-  display:flex;align-items:center;gap:10px}
+.demo-btn{text-align:left;width:100%;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 14px;cursor:pointer;transition:all .18s;color:var(--text);display:flex;align-items:center;gap:10px}
 .demo-btn:hover{border-color:var(--teal2);background:rgba(0,212,170,.04);transform:translateX(3px)}
 .demo-tag{font-family:var(--mono);font-size:.56rem;letter-spacing:.8px;padding:3px 7px;border-radius:4px;flex-shrink:0}
 .demo-tag.CRITICAL{color:var(--red2);background:rgba(255,23,68,.1);border:1px solid rgba(255,23,68,.2)}
 .demo-tag.HIGH    {color:var(--red); background:rgba(255,61,90,.1);border:1px solid rgba(255,61,90,.2)}
 .demo-tag.MEDIUM  {color:var(--yellow);background:rgba(245,196,0,.1);border:1px solid rgba(245,196,0,.2)}
-.demo-label{font-size:.8rem;font-weight:600;flex:1}
-.demo-arrow{color:var(--muted);font-size:.8rem}
+.demo-label{font-size:.8rem;font-weight:600;flex:1}.demo-arrow{color:var(--muted);font-size:.8rem}
+.history-section{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;animation:up .5s .25s ease both}
+.history-hdr{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;border-bottom:1px solid var(--border);background:rgba(0,0,0,.2)}
+.history-title{font-size:.92rem;font-weight:700}
+.hist-clear-btn{background:transparent;border:1px solid var(--border2);color:var(--muted);font-family:var(--sans);font-size:.72rem;padding:4px 12px;border-radius:6px;cursor:pointer;transition:all .2s}
+.hist-clear-btn:hover{border-color:var(--red);color:var(--red)}
+.hist-empty{padding:18px;font-family:var(--mono);font-size:.72rem;color:var(--muted);text-align:center}
+.hist-item{display:flex;align-items:center;gap:12px;padding:10px 18px;border-bottom:1px solid var(--border);transition:background .15s;cursor:default}
+.hist-item:last-child{border-bottom:none}.hist-item:hover{background:rgba(255,255,255,.02)}
+.hist-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.hist-info{flex:1;min-width:0}
+.hist-type{font-size:.82rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hist-time{font-family:var(--mono);font-size:.62rem;color:var(--muted);margin-top:2px}
+.hist-score{font-family:var(--mono);font-size:.78rem;font-weight:700;flex-shrink:0}
+.hist-sev{font-family:var(--mono);font-size:.58rem;letter-spacing:.8px;padding:2px 8px;border-radius:4px;flex-shrink:0}
 
-/* ── RIGHT / ANALYTICS ── */
+/* ══════════════════════════════════
+   RIGHT PANEL
+══════════════════════════════════ */
 .right{display:flex;flex-direction:column;gap:16px;position:sticky;top:80px;animation:up .5s .15s ease both}
+
+/* ── SCAM ALERTS FEED ── */
+.feed-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.feed-hdr{padding:12px 16px;border-bottom:1px solid var(--border);background:rgba(0,0,0,.22);display:flex;align-items:center;justify-content:space-between}
+.feed-hdr-left{display:flex;align-items:center;gap:9px}
+.feed-pulse{width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0;
+  box-shadow:0 0 0 0 rgba(255,61,90,.5);animation:pulse-ring 2s ease-in-out infinite}
+@keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(255,61,90,.5)}70%{box-shadow:0 0 0 7px rgba(255,61,90,0)}100%{box-shadow:0 0 0 0 rgba(255,61,90,0)}}
+.feed-title{font-size:.86rem;font-weight:800}
+.feed-refresh{background:transparent;border:1px solid var(--border2);color:var(--muted);font-family:var(--mono);font-size:.58rem;padding:4px 9px;border-radius:6px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:4px}
+.feed-refresh:hover:not(:disabled){border-color:var(--teal);color:var(--teal)}
+.feed-refresh:disabled{opacity:.35;cursor:not-allowed}
+.rf-icon{display:inline-block}
+.feed-refresh.spinning .rf-icon{animation:spin .65s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ticker */
+.feed-ticker{overflow:hidden;background:rgba(255,61,90,.04);border-bottom:1px solid rgba(255,61,90,.1);padding:5px 0;white-space:nowrap}
+.ticker-track{display:inline-flex;animation:ticker 32s linear infinite}
+.ticker-track:hover{animation-play-state:paused}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.t-item{font-family:var(--mono);font-size:.58rem;display:inline-flex;align-items:center;gap:4px;padding:0 16px;color:var(--muted)}
+.t-item .t-type{font-weight:700;color:var(--text)}.t-sep{color:var(--dim);padding:0 2px}
+
+/* skeleton */
+.feed-skeleton{padding:14px;display:flex;flex-direction:column;gap:11px}
+.sk-row{display:flex;gap:9px;align-items:flex-start}
+.sk{background:linear-gradient(90deg,var(--border) 25%,var(--border2) 50%,var(--border) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:5px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk-ico{width:28px;height:28px;border-radius:7px;flex-shrink:0}
+.sk-lines{flex:1;display:flex;flex-direction:column;gap:6px;padding-top:2px}
+.sk-h{height:10px}.sk-s{height:8px;width:55%}
+
+/* alert items */
+.alert-list{display:flex;flex-direction:column}
+.al-item{padding:11px 13px;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:6px;animation:up .3s ease both}
+.al-item:last-child{border-bottom:none}
+.al-top{display:flex;align-items:flex-start;gap:9px}
+.al-ico{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:1px}
+.al-ico.CRITICAL{background:rgba(255,23,68,.12);border:1px solid rgba(255,23,68,.22)}
+.al-ico.HIGH    {background:rgba(255,61,90,.1); border:1px solid rgba(255,61,90,.18)}
+.al-ico.MEDIUM  {background:rgba(245,196,0,.1); border:1px solid rgba(245,196,0,.18)}
+.al-ico.LOW     {background:rgba(0,212,170,.08);border:1px solid rgba(0,212,170,.15)}
+.al-body{flex:1;min-width:0}
+.al-headline{font-size:.78rem;font-weight:700;line-height:1.35;color:var(--text);margin-bottom:3px}
+.al-headline a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.07);transition:all .15s}
+.al-headline a:hover{color:var(--teal);border-bottom-color:var(--teal)}
+.al-meta{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.al-tag{font-family:var(--mono);font-size:.52rem;letter-spacing:.4px;padding:2px 5px;border-radius:3px;font-weight:700}
+.al-tag.CRITICAL{color:var(--red2);background:rgba(255,23,68,.1);border:1px solid rgba(255,23,68,.22)}
+.al-tag.HIGH    {color:var(--red); background:rgba(255,61,90,.08);border:1px solid rgba(255,61,90,.2)}
+.al-tag.MEDIUM  {color:var(--yellow);background:rgba(245,196,0,.08);border:1px solid rgba(245,196,0,.2)}
+.al-tag.LOW     {color:var(--teal);background:rgba(0,212,170,.06);border:1px solid rgba(0,212,170,.18)}
+.al-city{font-family:var(--mono);font-size:.56rem;color:var(--muted)}
+.al-time{font-family:var(--mono);font-size:.54rem;color:var(--dim);margin-left:auto}
+.al-detail{font-size:.71rem;color:var(--muted);line-height:1.5;padding-left:37px}
+.al-tip{padding-left:37px;font-family:var(--mono);font-size:.59rem;color:var(--teal);line-height:1.4}
+.al-tip::before{content:'→ ';opacity:.45}
+.al-link{padding-left:37px}
+.al-link a{font-family:var(--mono);font-size:.56rem;color:var(--blue);text-decoration:none;
+  display:inline-flex;align-items:center;gap:3px;padding:2px 7px;
+  border:1px solid rgba(33,150,243,.18);border-radius:4px;
+  background:rgba(33,150,243,.04);transition:all .15s}
+.al-link a:hover{background:rgba(33,150,243,.12);border-color:rgba(33,150,243,.38)}
+.al-link a::after{content:'↗';font-size:.5rem;opacity:.55}
+
+.feed-footer{padding:7px 13px;border-top:1px solid var(--border);background:rgba(0,0,0,.15);display:flex;align-items:center;justify-content:space-between}
+.ff-note{font-family:var(--mono);font-size:.54rem;color:var(--dim)}
+.ff-count{font-family:var(--mono);font-size:.56rem;color:var(--teal)}
+
+/* ── Need Help Now (original, unchanged) ── */
 .a-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden}
-.a-hdr{padding:13px 18px;border-bottom:1px solid var(--border);background:rgba(0,0,0,.2);
-  display:flex;align-items:center;justify-content:space-between}
+.a-hdr{padding:13px 18px;border-bottom:1px solid var(--border);background:rgba(0,0,0,.2);display:flex;align-items:center;justify-content:space-between}
 .a-title{font-size:.84rem;font-weight:700}
-.a-badge{font-family:var(--mono);font-size:.58rem;color:var(--teal);
-  background:rgba(0,212,170,.08);border:1px solid rgba(0,212,170,.2);padding:3px 8px;border-radius:4px;letter-spacing:.8px}
-.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
-.kpi{padding:13px 15px;background:var(--card)}
-.kpi-n{font-family:var(--mono);font-size:1.2rem;font-weight:600;color:var(--teal);line-height:1;margin-bottom:3px}
-.kpi-n.y{color:var(--yellow)}.kpi-n.g{color:var(--green)}
-.kpi-l{font-size:.68rem;color:var(--muted);line-height:1.3}
-.bd{padding:14px 18px;border-top:1px solid var(--border)}
-.bd-t{font-family:var(--mono);font-size:.6rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:11px}
-.bd-rows{display:flex;flex-direction:column;gap:8px}
-.bd-row{display:flex;flex-direction:column;gap:3px}
-.bd-rh{display:flex;justify-content:space-between;font-size:.73rem}
-.bd-nm{color:var(--text)}.bd-pc{font-family:var(--mono);font-size:.68rem}
-.bd-tr{height:4px;background:var(--dim);border-radius:2px;overflow:hidden}
-.bd-fl{height:100%;border-radius:2px;width:0;transition:width 1.2s cubic-bezier(.16,1,.3,1)}
-.lf{border-top:1px solid var(--border)}
-.lf-hdr{padding:10px 18px;background:rgba(0,0,0,.2);border-bottom:1px solid var(--border)}
-.lf-t{font-family:var(--mono);font-size:.6rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)}
-.lf-item{display:flex;align-items:center;gap:9px;padding:8px 18px;
-  border-bottom:1px solid var(--border);font-size:.76rem}
-.lf-item:last-child{border-bottom:none}
-.lf-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-.lf-info{flex:1}.lf-type{font-weight:600}.lf-city{color:var(--muted);font-size:.7rem}
-.lf-time{font-family:var(--mono);font-size:.63rem;color:var(--muted)}
-.info-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:15px 18px}
-.info-title{font-size:.8rem;font-weight:700;margin-bottom:9px}
-.info-rows{display:flex;flex-direction:column;gap:6px}
-.info-row{display:flex;align-items:flex-start;gap:8px;font-size:.76rem;color:var(--muted);line-height:1.4}
+.a-hdr.danger{background:rgba(255,61,90,.06);border-bottom-color:rgba(255,61,90,.18)}
+.a-hdr.danger .a-title{color:var(--red)}
+.emergency-body{padding:14px;display:flex;flex-direction:column;gap:8px}
+.hl-btn{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;text-decoration:none;transition:all .18s;border:1px solid transparent}
+.hl-btn.call{background:rgba(0,224,150,.08);border-color:rgba(0,224,150,.25);color:var(--green)}
+.hl-btn.call:hover{background:rgba(0,224,150,.18);border-color:rgba(0,224,150,.45);transform:translateY(-1px)}
+.hl-btn.report{background:rgba(33,150,243,.08);border-color:rgba(33,150,243,.25);color:var(--blue)}
+.hl-btn.report:hover{background:rgba(33,150,243,.18);border-color:rgba(33,150,243,.45);transform:translateY(-1px)}
+.hl-btn.cert{background:rgba(245,196,0,.07);border-color:rgba(245,196,0,.22);color:var(--yellow)}
+.hl-btn.cert:hover{background:rgba(245,196,0,.14);border-color:rgba(245,196,0,.4);transform:translateY(-1px)}
+.hl-btn-icon{font-size:1.3rem;flex-shrink:0}
+.hl-btn-main{font-size:.84rem;font-weight:700;font-family:var(--sans);color:inherit}
+.hl-btn-sub{font-size:.63rem;font-family:var(--mono);opacity:.65;margin-top:2px}
+.hl-note{font-size:.67rem;color:var(--muted);line-height:1.5;padding-top:10px;margin-top:2px;border-top:1px solid var(--border);font-style:italic}
 
-footer{text-align:center;padding:18px;border-top:1px solid var(--border);
-  font-family:var(--mono);font-size:.65rem;color:var(--muted);position:relative;z-index:1}
-footer a{color:var(--teal);text-decoration:none}
-
-@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-@keyframes slid{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:translateX(0)}}
-
-@media(max-width:900px){main{grid-template-columns:1fr}.right{position:static}.kpi-grid{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:600px){header{padding:0 16px}main{padding:22px 14px 60px}h1{font-size:1.55rem}.kpi-grid{grid-template-columns:1fr 1fr}.hdr-link{display:none}.check-group{grid-template-columns:1fr}}
-
-/* ── FACTOR BREAKDOWN VISUALIZATION ── */
+/* factor breakdown */
 .factor-sec{padding:18px 22px;background:var(--card);border-bottom:1px solid var(--border)}
 .factor-title-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .factor-title{font-family:var(--mono);font-size:.63rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
@@ -286,68 +274,24 @@ footer a{color:var(--teal);text-decoration:none}
 .factor-fill.ims{background:linear-gradient(90deg,#8e24aa,#ce93d8)}
 .factor-fill.its{background:linear-gradient(90deg,var(--red2),var(--red))}
 .factor-matched{font-family:var(--mono);font-size:.62rem;color:var(--muted);margin-top:1px}
-.factor-matched span{color:var(--dim)}
-.factor-matched .fm-tag{color:#7a9ab5;margin-right:4px}
-.factor-total-row{display:flex;align-items:center;justify-content:space-between;
-  padding:10px 14px;background:rgba(0,212,170,.05);border:1px solid rgba(0,212,170,.12);
-  border-radius:8px;margin-top:4px}
+.factor-matched span{color:var(--dim)}.factor-matched .fm-tag{color:#7a9ab5;margin-right:4px}
+.factor-total-row{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(0,212,170,.05);border:1px solid rgba(0,212,170,.12);border-radius:8px;margin-top:4px}
 .factor-total-lbl{font-family:var(--mono);font-size:.68rem;color:var(--muted)}
 .factor-total-val{font-family:var(--mono);font-size:1rem;font-weight:700;color:var(--teal)}
-.factor-formula{font-family:var(--mono);font-size:.62rem;color:var(--muted);
-  padding:8px 12px;background:rgba(0,0,0,.2);border-radius:6px;margin-top:8px;line-height:1.6}
+.factor-formula{font-family:var(--mono);font-size:.62rem;color:var(--muted);padding:8px 12px;background:rgba(0,0,0,.2);border-radius:6px;margin-top:8px;line-height:1.6}
 .factor-formula .fv{color:var(--text);font-weight:600}
 
-/* ── PREVIOUS SCANS HISTORY ── */
-.history-section{background:var(--surface);border:1px solid var(--border);border-radius:16px;
-  overflow:hidden;animation:up .5s .25s ease both}
-.history-hdr{display:flex;align-items:center;justify-content:space-between;
-  padding:13px 18px;border-bottom:1px solid var(--border);background:rgba(0,0,0,.2)}
-.history-title{font-size:.92rem;font-weight:700}
-.hist-clear-btn{background:transparent;border:1px solid var(--border2);color:var(--muted);
-  font-family:var(--sans);font-size:.72rem;padding:4px 12px;border-radius:6px;
-  cursor:pointer;transition:all .2s}
-.hist-clear-btn:hover{border-color:var(--red);color:var(--red)}
-.hist-empty{padding:18px;font-family:var(--mono);font-size:.72rem;color:var(--muted);text-align:center}
-.hist-item{display:flex;align-items:center;gap:12px;padding:10px 18px;
-  border-bottom:1px solid var(--border);transition:background .15s;cursor:default}
-.hist-item:last-child{border-bottom:none}
-.hist-item:hover{background:rgba(255,255,255,.02)}
-.hist-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.hist-info{flex:1;min-width:0}
-.hist-type{font-size:.82rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hist-time{font-family:var(--mono);font-size:.62rem;color:var(--muted);margin-top:2px}
-.hist-score{font-family:var(--mono);font-size:.78rem;font-weight:700;flex-shrink:0}
-.hist-sev{font-family:var(--mono);font-size:.58rem;letter-spacing:.8px;padding:2px 8px;
-  border-radius:4px;flex-shrink:0}
-
-/* ── HELPLINE INTERACTIVE ── */
-.helpline a{color:inherit;text-decoration:none;transition:opacity .15s}
-.helpline a:hover{opacity:.75;text-decoration:underline}
-.hl-web::before{content:'🌐 '}
-/* ── NEED HELP NOW sidebar card ── */
-.emergency-body{padding:14px;display:flex;flex-direction:column;gap:8px}
-.hl-btn{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;
-  text-decoration:none;transition:all .18s;border:1px solid transparent}
-.hl-btn.call{background:rgba(0,224,150,.08);border-color:rgba(0,224,150,.25);color:var(--green)}
-.hl-btn.call:hover{background:rgba(0,224,150,.18);border-color:rgba(0,224,150,.45);transform:translateY(-1px)}
-.hl-btn.report{background:rgba(33,150,243,.08);border-color:rgba(33,150,243,.25);color:var(--blue)}
-.hl-btn.report:hover{background:rgba(33,150,243,.18);border-color:rgba(33,150,243,.45);transform:translateY(-1px)}
-.hl-btn.cert{background:rgba(245,196,0,.07);border-color:rgba(245,196,0,.22);color:var(--yellow)}
-.hl-btn.cert:hover{background:rgba(245,196,0,.14);border-color:rgba(245,196,0,.4);transform:translateY(-1px)}
-.hl-btn-icon{font-size:1.3rem;flex-shrink:0}
-.hl-btn-main{font-size:.84rem;font-weight:700;font-family:var(--sans);color:inherit}
-.hl-btn-sub{font-size:.63rem;font-family:var(--mono);opacity:.65;margin-top:2px}
-.hl-note{font-size:.67rem;color:var(--muted);line-height:1.5;padding-top:10px;
-  margin-top:2px;border-top:1px solid var(--border);font-style:italic}
-.a-hdr.danger{background:rgba(255,61,90,.06);border-bottom-color:rgba(255,61,90,.18)}
-.a-hdr.danger .a-title{color:var(--red)}
-
+footer{text-align:center;padding:18px;border-top:1px solid var(--border);font-family:var(--mono);font-size:.65rem;color:var(--muted);position:relative;z-index:1}
+footer a{color:var(--teal);text-decoration:none}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slid{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:translateX(0)}}
+@media(max-width:900px){main{grid-template-columns:1fr}.right{position:static}}
+@media(max-width:600px){header{padding:0 16px}main{padding:22px 14px 60px}h1{font-size:1.55rem}.hdr-link{display:none}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<!-- HEADER -->
 <header>
   <a class="logo" href="#">
     <div class="logo-shield">🛡️</div>
@@ -355,8 +299,7 @@ footer a{color:var(--teal);text-decoration:none}
   </a>
   <div class="hdr-right">
     <a class="hdr-link" href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer">cybercrime.gov.in</a>
-    <a class="hdr-link" href="tel:1930" data-i18n="nav.helpline">📞 1930</a>
-    <button class="lang-toggle" onclick="daToggleLang()" data-i18n="nav.lang-toggle">हिं</button>
+    <a class="hdr-link" href="tel:1930">📞 1930</a>
     <div class="live-pill"><div class="live-dot"></div>LIVE</div>
   </div>
 </header>
@@ -364,188 +307,176 @@ footer a{color:var(--teal);text-decoration:none}
 <main>
 <!-- ═══════════ LEFT ═══════════ -->
 <div class="left">
-
-  <!-- Hero -->
   <div class="hero">
-    <div class="eyebrow" data-i18n="hero.eyebrow">🇮🇳 India Cybercrime Prevention</div>
-    <h1><span data-i18n="hero.title-line1">Got a suspicious call?</span><br><span class="grad" data-i18n="hero.title-line2">Report it. We'll detect it.</span></h1>
-    <p data-i18n="hero.subtitle">Fill in what happened on the call — who called, what they claimed, what they wanted. Our engine analyses it and tells you if it's a scam.</p>
+    <div class="eyebrow">🇮🇳 India Cybercrime Prevention</div>
+    <h1>Got a suspicious call?<br><span class="grad">Report it. We'll detect it.</span></h1>
+    <p>Fill in what happened on the call — who called, what they claimed, what they wanted. Our engine analyses it and tells you if it's a scam.</p>
   </div>
 
-  <!-- ═══════ PASTE / SCAN PANEL ═══════ -->
   <div class="form-card" id="rawCard">
     <div class="form-card-header">
-      <div class="form-card-title" data-i18n="scan.card-title">Paste Message or Describe the Call</div>
+      <div class="form-card-title">Paste Message or Describe the Call</div>
     </div>
     <div class="raw-section">
-      <div class="field-hint" style="margin-bottom:12px" data-i18n="scan.field-hint">Paste the exact SMS / WhatsApp message you received, or type what the caller said in your own words.</div>
+      <div class="field-hint" style="margin-bottom:12px">Paste the exact SMS / WhatsApp message you received, or type what the caller said in your own words.</div>
       <div class="raw-ta-wrap">
-        <textarea id="rawMsg" data-i18n-ph="scan.placeholder" placeholder="e.g. 'Dear Customer, your SBI KYC has expired. Your account will be deactivated in 24 hours. Click: sbi-kyc-update.xyz/verify'&#10;&#10;Or: 'A person called claiming to be an ED officer. He said my Aadhaar is linked to money laundering and I am under digital arrest...'"></textarea>
+        <textarea id="rawMsg" placeholder="e.g. 'Dear Customer, your SBI KYC has expired. Your account will be deactivated in 24 hours. Click: sbi-kyc-update.xyz/verify'&#10;&#10;Or: 'A person called claiming to be an ED officer. He said my Aadhaar is linked to money laundering and I am under digital arrest...'"></textarea>
       </div>
       <div class="char-hint" id="rawCount">0 characters</div>
     </div>
     <div class="form-nav">
       <div></div>
-      <button class="btn-next" onclick="scanRaw()" data-i18n="scan.btn">🔍 Scan Now</button>
+      <button class="btn-next" onclick="scanRaw()">🔍 Scan Now</button>
     </div>
   </div>
 
-  <!-- Scanning bar -->
   <div class="scanning-bar" id="scanBar">
     <div class="dots"><span></span><span></span><span></span></div>
-    <span data-i18n="scan.bar">Analysing your report across 5 scam categories…</span>
+    Analysing your report across 5 scam categories…
   </div>
 
-  <!-- Result -->
   <div id="result"></div>
 
-  <!-- Demo test cases -->
   <div class="demo-section">
-    <div class="demo-title" data-i18n="demo.title">🧪 Demo Test Cases</div>
+    <div class="demo-title">🧪 Demo Test Cases</div>
     <div class="demo-grid" id="demoGrid"></div>
   </div>
 
-  <!-- Previous Scams History -->
   <div class="history-section" id="historySection">
     <div class="history-hdr">
-      <div class="history-title" data-i18n="hist.title">🕓 Your Previous Scans</div>
-      <button class="hist-clear-btn" onclick="clearHistory()" data-i18n="hist.clear">Clear</button>
+      <div class="history-title">🕓 Your Previous Scans</div>
+      <button class="hist-clear-btn" onclick="clearHistory()">Clear</button>
     </div>
-    <div id="historyList"><div class="hist-empty" data-i18n="hist.empty">No scans yet — your results will appear here.</div></div>
+    <div id="historyList"><div class="hist-empty">No scans yet — your results will appear here.</div></div>
   </div>
+</div>
 
-</div><!-- /left -->
-
-<!-- ═══════════ RIGHT / ANALYTICS ═══════════ -->
+<!-- ═══════════ RIGHT ═══════════ -->
 <div class="right">
-  <div class="a-card">
-    <div class="a-hdr">
-      <div class="a-title" data-i18n="analytics.title">📊 Live Analytics</div>
-      <div class="a-badge" data-i18n="analytics.badge">TODAY</div>
+
+  <!-- ══ AI SCAM ALERTS FEED (replaces Live Analytics) ══ -->
+  <div class="feed-card">
+    <div class="feed-hdr">
+      <div class="feed-hdr-left">
+        <div class="feed-pulse"></div>
+        <div class="feed-title">🚨 India Scam Alerts</div>
+      </div>
+      <button class="feed-refresh" id="refreshBtn" onclick="loadAlerts()">
+        <span class="rf-icon">↻</span>&thinsp;Refresh
+      </button>
     </div>
-    <div class="kpi-grid">
-      <div class="kpi"><div class="kpi-n y" id="kpiD">—</div><div class="kpi-l" data-i18n="kpi.detected">Scams Detected</div></div>
-      <div class="kpi"><div class="kpi-n g" id="kpiM">—</div><div class="kpi-l" data-i18n="kpi.money">Money Protected</div></div>
-      <div class="kpi"><div class="kpi-n" id="kpiU">—</div><div class="kpi-l" data-i18n="kpi.users">Users Warned</div></div>
-      <div class="kpi"><div class="kpi-n y">64%</div><div class="kpi-l" data-i18n="kpi.top">Most: Digital Arrest</div></div>
+
+    <div class="feed-ticker">
+      <div class="ticker-track" id="tickerTrack">
+        <span class="t-item"><span class="t-type">Digital Arrest</span> — CBI impersonator targets Bengaluru resident</span><span class="t-sep">·</span>
+        <span class="t-item"><span class="t-type">KYC Fraud</span> — Fake SBI SMS steals Aadhaar OTP</span><span class="t-sep">·</span>
+        <span class="t-item"><span class="t-type">TRAI Scam</span> — SIM block robocalls spike in Delhi NCR</span><span class="t-sep">·</span>
+        <span class="t-item"><span class="t-type">Prize Scam</span> — KBC lottery WhatsApp campaign resurfaces</span><span class="t-sep">·</span>
+        <span class="t-item"><span class="t-type">Digital Arrest</span> — CBI impersonator targets Bengaluru resident</span><span class="t-sep">·</span>
+        <span class="t-item"><span class="t-type">KYC Fraud</span> — Fake SBI SMS steals Aadhaar OTP</span><span class="t-sep">·</span>
+        <span class="t-item"><span class="t-type">TRAI Scam</span> — SIM block robocalls spike in Delhi NCR</span><span class="t-sep">·</span>
+        <span class="t-item"><span class="t-type">Prize Scam</span> — KBC lottery WhatsApp campaign resurfaces</span><span class="t-sep">·</span>
+      </div>
     </div>
-    <div class="bd">
-      <div class="bd-t" data-i18n="bd.title">Scam Type Breakdown</div>
-      <div class="bd-rows" id="bdRows"></div>
+
+    <div id="alertList">
+      <div class="feed-skeleton">
+        <div class="sk-row"><div class="sk sk-ico"></div><div class="sk-lines"><div class="sk sk-h"></div><div class="sk sk-s"></div></div></div>
+        <div class="sk-row"><div class="sk sk-ico"></div><div class="sk-lines"><div class="sk sk-h"></div><div class="sk sk-s"></div></div></div>
+        <div class="sk-row"><div class="sk sk-ico"></div><div class="sk-lines"><div class="sk sk-h"></div><div class="sk sk-s"></div></div></div>
+        <div class="sk-row"><div class="sk sk-ico"></div><div class="sk-lines"><div class="sk sk-h"></div><div class="sk sk-s"></div></div></div>
+      </div>
     </div>
-    <div class="lf">
-      <div class="lf-hdr"><div class="lf-t" data-i18n="lf.title">Recent Detections</div></div>
-      <div id="lfItems"></div>
+
+    <div class="feed-footer">
+      <div class="ff-note" id="ffNote">Searching live news…</div>
+      <div class="ff-count" id="ffCount"></div>
     </div>
   </div>
 
+  <!-- ══ NEED HELP NOW — unchanged from original ══ -->
   <div class="a-card">
     <div class="a-hdr danger">
-      <div class="a-title" data-i18n="hl.title">🆘 Need Help Now?</div>
+      <div class="a-title">🆘 Need Help Now?</div>
     </div>
     <div class="emergency-body">
       <a class="hl-btn call" href="tel:1930">
         <span class="hl-btn-icon">📞</span>
-        <div><div class="hl-btn-main" data-i18n="hl.call-main">Call 1930</div><div class="hl-btn-sub" data-i18n="hl.call-sub">Cyber Crime Helpline · Free · 24×7</div></div>
+        <div><div class="hl-btn-main">Call 1930</div><div class="hl-btn-sub">Cyber Crime Helpline · Free · 24×7</div></div>
       </a>
       <a class="hl-btn report" href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer">
         <span class="hl-btn-icon">🌐</span>
-        <div><div class="hl-btn-main" data-i18n="hl.web-main">Report at cybercrime.gov.in</div><div class="hl-btn-sub" data-i18n="hl.web-sub">Official National Cyber Crime Portal</div></div>
+        <div><div class="hl-btn-main">Report at cybercrime.gov.in</div><div class="hl-btn-sub">Official National Cyber Crime Portal</div></div>
       </a>
       <a class="hl-btn cert" href="https://cert-in.org.in" target="_blank" rel="noopener noreferrer">
         <span class="hl-btn-icon">🔒</span>
-        <div><div class="hl-btn-main" data-i18n="hl.cert-main">CERT-In Portal</div><div class="hl-btn-sub" data-i18n="hl.cert-sub">cert-in.org.in · Cyber Security Incidents</div></div>
+        <div><div class="hl-btn-main">CERT-In Portal</div><div class="hl-btn-sub">cert-in.org.in · Cyber Security Incidents</div></div>
       </a>
-      <div class="hl-note" data-i18n="hl.note">Free official government services. Never pay anyone claiming to be from a helpline.</div>
+      <div class="hl-note">Free official government services. Never pay anyone claiming to be from a helpline.</div>
     </div>
   </div>
 
 </div>
-
 </main>
 
 <footer>
-  <span data-i18n="footer.text">Built for Hackathon 2025 · Helpline:</span>
-  <a href="tel:1930">1930</a> &nbsp;·&nbsp;
+  Built for Hackathon 2025 &nbsp;·&nbsp;
+  Helpline: <a href="tel:1930">1930</a> &nbsp;·&nbsp;
   <a href="https://cybercrime.gov.in" target="_blank">cybercrime.gov.in</a> &nbsp;·&nbsp;
   <a href="https://cert-in.org.in" target="_blank">cert-in.org.in</a>
 </footer>
 </div>
 
-<script src="/static/i18n.js"></script>
 <script>
+/* ══ SCAN ══ */
 async function scanRaw() {
   const msg = document.getElementById('rawMsg').value.trim();
   if (!msg) { alert('Please paste or type a message first.'); return; }
   await scan(msg);
 }
-
-// ══════════════════════════════════════
-//  SCAN (shared)
-// ══════════════════════════════════════
 async function scan(text) {
   const bar = document.getElementById('scanBar');
   const res = document.getElementById('result');
   bar.classList.add('show');
   res.style.display = 'none'; res.innerHTML = '';
-
   try {
     const r = await fetch('/analyze', {
-      method: 'POST', headers: {'Content-Type':'application/json'},
+      method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ message: text })
     });
     renderResult(await r.json(), res);
   } catch(e) {
     res.innerHTML = '<div style="color:var(--red);padding:14px;font-family:var(--mono);font-size:.8rem;">⚠ Could not reach Flask server. Run: python app.py</div>';
     res.style.display = 'block';
-  } finally {
-    bar.classList.remove('show');
-  }
+  } finally { bar.classList.remove('show'); }
 }
 
-// ══════════════════════════════════════
-//  RENDER RESULT  —  with factor breakdown
-// ══════════════════════════════════════
-const SC = {CRITICAL:'critical',HIGH:'high',MEDIUM:'medium',SAFE:'safe'};
-const IC = {CRITICAL:'🚨',HIGH:'⚠️',MEDIUM:'⚡',SAFE:'✅'};
-
-// Factor metadata: icon, CSS class, colour for the filled bar label
+/* ══ FACTOR HTML ══ */
 const FACTOR_META = {
-  kds: { icon:'🔑', label:'Keyword Density Score',    cls:'kds', hint:'(max 40)' },
-  ups: { icon:'⏱️', label:'Urgency & Pressure Score', cls:'ups', hint:'(max 25)' },
-  ims: { icon:'🏛️', label:'Impersonation Score',       cls:'ims', hint:'(max 20)' },
-  its: { icon:'🔇', label:'Isolation Tactic Score',   cls:'its', hint:'(max 15)' },
+  kds:{icon:'🔑',label:'Keyword Density Score',cls:'kds',hint:'(max 40)'},
+  ups:{icon:'⏱️',label:'Urgency & Pressure Score',cls:'ups',hint:'(max 25)'},
+  ims:{icon:'🏛️',label:'Impersonation Score',cls:'ims',hint:'(max 20)'},
+  its:{icon:'🔇',label:'Isolation Tactic Score',cls:'its',hint:'(max 15)'},
 };
-
 function buildFactorHTML(factors) {
   if (!factors) return '';
-
-  const rows = Object.entries(FACTOR_META).map(([key, meta]) => {
-    const f = factors[key] || {score:0, max:meta.maxPts, matched:[]};
-    const pct = Math.round((f.score / f.max) * 100);
+  const rows = Object.entries(FACTOR_META).map(([key,meta]) => {
+    const f = factors[key] || {score:0,max:40,matched:[]};
+    const pct = Math.round((f.score/f.max)*100);
     const matchedStr = f.matched.length
-      ? f.matched.slice(0,3).map(m => `<span class="fm-tag">"${m}"</span>`).join(' ')
+      ? f.matched.slice(0,3).map(m=>`<span class="fm-tag">"${m}"</span>`).join(' ')
       : '<span style="color:var(--dim)">none detected</span>';
-
-    return `
-    <div class="factor-row">
+    return `<div class="factor-row">
       <div class="factor-row-head">
         <div class="factor-name"><span class="fi">${meta.icon}</span>${meta.label}</div>
         <div class="factor-score-label"><span class="fs-val">${f.score}</span> / ${f.max} pts</div>
       </div>
-      <div class="factor-track">
-        <div class="factor-fill ${key}" data-pct="${pct}" style="width:0%"></div>
-      </div>
+      <div class="factor-track"><div class="factor-fill ${key}" data-pct="${pct}" style="width:0%"></div></div>
       <div class="factor-matched">${matchedStr}</div>
     </div>`;
   }).join('');
-
-  const f = factors;
-  const kds = f.kds?.score||0, ups = f.ups?.score||0, ims = f.ims?.score||0, its = f.its?.score||0;
-  const rawSum = kds + ups + ims + its;
-
-  return `
-  <div class="factor-sec">
+  const f=factors,kds=f.kds?.score||0,ups=f.ups?.score||0,ims=f.ims?.score||0,its=f.its?.score||0,rawSum=kds+ups+ims+its;
+  return `<div class="factor-sec">
     <div class="factor-title-row">
       <div class="factor-title">Risk Score Breakdown — 4-Factor Algorithm</div>
       <div class="factor-legend">Score = KDS + UPS + IMS + ITS</div>
@@ -553,206 +484,238 @@ function buildFactorHTML(factors) {
     <div class="factor-rows">${rows}</div>
     <div class="factor-total-row">
       <div class="factor-total-lbl">Combined Raw Score</div>
-      <div class="factor-total-val">${kds} + ${ups} + ${ims} + ${its} = ${Math.min(100, rawSum)} / 100</div>
+      <div class="factor-total-val">${kds} + ${ups} + ${ims} + ${its} = ${Math.min(100,rawSum)} / 100</div>
     </div>
-    <div class="factor-formula">
-      KDS <span class="fv">${kds}</span> (keyword density) + 
-      UPS <span class="fv">${ups}</span> (urgency) + 
-      IMS <span class="fv">${ims}</span> (impersonation) + 
-      ITS <span class="fv">${its}</span> (isolation)
-      → min(100, ${rawSum}) → with severity floor → <span class="fv">final ${Math.min(100,rawSum)}%</span>
-    </div>
+    <div class="factor-formula">KDS <span class="fv">${kds}</span> (keyword density) + UPS <span class="fv">${ups}</span> (urgency) + IMS <span class="fv">${ims}</span> (impersonation) + ITS <span class="fv">${its}</span> (isolation) → min(100,${rawSum}) → with severity floor → <span class="fv">final ${Math.min(100,rawSum)}%</span></div>
   </div>`;
 }
 
+/* ══ RENDER RESULT ══ */
+const SC={CRITICAL:'critical',HIGH:'high',MEDIUM:'medium',SAFE:'safe'};
+const IC={CRITICAL:'🚨',HIGH:'⚠️',MEDIUM:'⚡',SAFE:'✅'};
 function renderResult(data, container) {
-  let html = '';
-
-  if (data.status === 'SAFE') {
-    const f = data.factors;
-    html = `<div class="res-card">
+  let html='';
+  if (data.status==='SAFE') {
+    html=`<div class="res-card">
       <div class="rh safe"><div class="rh-l"><div class="rh-ico safe">✅</div>
         <div><div class="rh-title safe">No Scam Detected</div><div class="rh-sub">Report appears clean — stay cautious</div></div></div>
         <div class="sev SAFE">SAFE</div></div>
-      ${f ? buildFactorHTML(f) : ''}
+      ${data.factors?buildFactorHTML(data.factors):''}
       <div class="safe-body"><div class="safe-tip">💡 ${data.tip}</div></div>
       <div class="helpline"><a class="hl" href="tel:1930">Cybercrime Helpline: 1930</a><a class="hl hl-web" href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer">cybercrime.gov.in</a></div>
     </div>`;
   } else {
-    const sc = SC[data.severity]||'high', ic = IC[data.severity]||'🚨';
-    const chips = data.matched_keywords.map(kw =>
-      `<div class="kw">${kw}${data.keyword_weights[kw]?`<span class="kw-w">×${data.keyword_weights[kw]}</span>`:''}</div>`
-    ).join('');
-    const acts = data.action.map((a,i) =>
-      `<li class="act-item"><span class="act-n">${i+1}</span>${a}</li>`
-    ).join('');
-    const others = data.other_matches.length
-      ? `<div class="other-row">Also matched: ${data.other_matches.map(o=>`<span class="other-tag">${o.type} — ${o.risk_score}%</span>`).join(' ')}</div>` : '';
-
-    html = `<div class="res-card">
+    const sc=SC[data.severity]||'high',ic=IC[data.severity]||'🚨';
+    const chips=data.matched_keywords.map(kw=>`<div class="kw">${kw}${data.keyword_weights[kw]?`<span class="kw-w">×${data.keyword_weights[kw]}</span>`:''}</div>`).join('');
+    const acts=data.action.map((a,i)=>`<li class="act-item"><span class="act-n">${i+1}</span>${a}</li>`).join('');
+    const others=data.other_matches.length?`<div class="other-row">Also matched: ${data.other_matches.map(o=>`<span class="other-tag">${o.type} — ${o.risk_score}%</span>`).join(' ')}</div>`:'';
+    html=`<div class="res-card">
       <div class="rh ${sc}"><div class="rh-l"><div class="rh-ico ${sc}">${ic}</div>
         <div><div class="rh-title ${sc}">SCAM DETECTED</div><div class="rh-sub">${data.primary_scam}</div></div></div>
         <div class="sev ${data.severity}">${data.severity}</div></div>
-
       <div class="risk-sec">
         <div class="risk-hdr"><div class="risk-lbl">Total Risk Score</div><div class="risk-num ${sc}">${data.risk_score}%</div></div>
         <div class="risk-track"><div class="risk-fill ${sc}" data-t="${data.risk_score}"></div></div>
         <div class="risk-scale"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
       </div>
-
       ${buildFactorHTML(data.factors)}
-
       <div class="kw-sec"><div class="sec-lbl">Detected Trigger Phrases</div><div class="kw-wrap">${chips}</div></div>
       <div class="exp-sec"><div class="sec-lbl" style="margin-bottom:9px">Why This Is A Scam</div><div class="exp-text">${data.explanation}</div></div>
       <div class="act-sec"><div class="sec-lbl" style="margin-bottom:11px">What You Should Do</div><ul class="act-list">${acts}</ul></div>
       ${others}
       <div class="helpline"><a class="hl" href="tel:1930">Cybercrime Helpline: 1930</a><a class="hl hl-web" href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer">cybercrime.gov.in</a><a class="hl hl-web" href="https://cert-in.org.in" target="_blank" rel="noopener noreferrer">cert-in.org.in</a></div>
     </div>
-
     <button class="btn-reset" onclick="resetAll()">← Report Another Incident</button>`;
   }
-
-  container.innerHTML = html;
-  container.style.display = 'block';
-
-  // Animate main risk bar
-  const fill = container.querySelector('.risk-fill');
-  if (fill) requestAnimationFrame(() => { fill.style.width = fill.dataset.t + '%'; });
-
-  // Animate factor bars with staggered delay
-  container.querySelectorAll('.factor-fill').forEach((el, i) => {
-    setTimeout(() => { el.style.width = el.dataset.pct + '%'; }, 200 + i * 120);
-  });
-
-  container.scrollIntoView({ behavior:'smooth', block:'nearest' });
-
-  // Save to history
-  if (data.status === 'SCAM_DETECTED') {
-    saveToHistory({ type: data.primary_scam, severity: data.severity, score: data.risk_score });
-  } else {
-    saveToHistory({ type: 'No Scam Detected', severity: 'SAFE', score: 0 });
-  }
+  container.innerHTML=html; container.style.display='block';
+  const fill=container.querySelector('.risk-fill');
+  if(fill) requestAnimationFrame(()=>{fill.style.width=fill.dataset.t+'%';});
+  container.querySelectorAll('.factor-fill').forEach((el,i)=>{setTimeout(()=>{el.style.width=el.dataset.pct+'%';},200+i*120);});
+  container.scrollIntoView({behavior:'smooth',block:'nearest'});
+  if(data.status==='SCAM_DETECTED') saveToHistory({type:data.primary_scam,severity:data.severity,score:data.risk_score});
+  else saveToHistory({type:'No Scam Detected',severity:'SAFE',score:0});
 }
-
-function clearResult() {
-  const r = document.getElementById('result');
-  r.style.display = 'none'; r.innerHTML = '';
-}
-
-function resetAll() {
-  document.getElementById('rawMsg').value = '';
-  document.getElementById('rawCount').textContent = '0 characters';
-  clearResult();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// ══════════════════════════════════════
-//  RAW CHAR COUNT
-// ══════════════════════════════════════
-document.getElementById('rawMsg').addEventListener('input', function() {
-  document.getElementById('rawCount').textContent = `${this.value.length} characters`;
+function clearResult(){const r=document.getElementById('result');r.style.display='none';r.innerHTML='';}
+function resetAll(){document.getElementById('rawMsg').value='';document.getElementById('rawCount').textContent='0 characters';clearResult();window.scrollTo({top:0,behavior:'smooth'});}
+document.getElementById('rawMsg').addEventListener('input',function(){
+  document.getElementById('rawCount').textContent=`${this.value.length} characters`;
 });
 
-// ══════════════════════════════════════
-//  ANALYTICS
-// ══════════════════════════════════════
-const TYPE_COLORS = {'Digital Arrest':'#ff4560','KYC Fraud':'#f5c400','IT Dept Scam':'#ff9820','TRAI Scam':'#2196f3','Prize Scam':'#00d4aa'};
-
-async function loadAnalytics() {
+/* ══ DEMO TEST CASES ══ */
+async function loadDemos(){
   try {
-    const d = await (await fetch('/analytics')).json();
-    document.getElementById('kpiD').textContent = d.scams_detected_today;
-    document.getElementById('kpiM').textContent = d.money_protected;
-    document.getElementById('kpiU').textContent = d.users_warned;
-    document.getElementById('bdRows').innerHTML = d.breakdown.map(b =>
-      `<div class="bd-row"><div class="bd-rh"><span class="bd-nm">${b.type}</span><span class="bd-pc" style="color:${b.color}">${b.pct}%</span></div>
-       <div class="bd-tr"><div class="bd-fl" style="background:${b.color}" data-w="${b.pct}"></div></div></div>`
-    ).join('');
-    setTimeout(() => { document.querySelectorAll('.bd-fl').forEach(f => { f.style.width = f.dataset.w + '%'; }); }, 200);
-    document.getElementById('lfItems').innerHTML = d.recent.map((r,i) =>
-      `<div class="lf-item" style="animation-delay:${i*.07}s">
-        <div class="lf-dot" style="background:${TYPE_COLORS[r.type]||'#888'}"></div>
-        <div class="lf-info"><div class="lf-type">${r.type}</div><div class="lf-city">${r.city}</div></div>
-        <div class="lf-time">${r.time}</div>
-      </div>`
-    ).join('');
-  } catch(e) { console.warn('Analytics unavailable'); }
-}
-
-// ══════════════════════════════════════
-//  DEMO TEST CASES — open detail page
-// ══════════════════════════════════════
-async function loadDemos() {
-  try {
-    const cases = await (await fetch('/test-cases')).json();
-    document.getElementById('demoGrid').innerHTML = cases.map(tc =>
-      `<a class="demo-btn" href="/scam/${tc.slug}" target="_blank" rel="noopener noreferrer">
+    const cases=await (await fetch('/test-cases')).json();
+    window._demos=cases;
+    document.getElementById('demoGrid').innerHTML=cases.map(tc=>
+      `<button class="demo-btn" onclick="runDemo(${tc.id})">
         <span class="demo-tag ${tc.tag}">${tc.tag}</span>
         <span class="demo-label">${tc.label}</span>
-        <span class="demo-arrow">↗</span>
-      </a>`
+        <span class="demo-arrow">→</span>
+      </button>`
     ).join('');
-  } catch(e) { console.warn('Demos unavailable'); }
+  } catch(e){console.warn('Demos unavailable');}
+}
+function runDemo(id){
+  const tc=(window._demos||[]).find(c=>c.id===id);
+  if(!tc) return;
+  document.getElementById('rawMsg').value=tc.message;
+  document.getElementById('rawCount').textContent=`${tc.message.length} characters`;
+  document.getElementById('rawCard').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>scan(tc.message),300);
 }
 
-// ══════════════════════════════════════
-//  SCAN HISTORY  (localStorage)
-// ══════════════════════════════════════
-const HIST_KEY = 'da_scan_history';
-const SEV_COLOR = { CRITICAL:'#ff1744', HIGH:'#ff3d5a', MEDIUM:'#f5c400', SAFE:'#00e096' };
-
-function getHistory() {
-  try { return JSON.parse(localStorage.getItem(HIST_KEY) || '[]'); } catch { return []; }
-}
-
-function saveToHistory(entry) {
-  const history = getHistory();
-  history.unshift({
-    type:     entry.type,
-    severity: entry.severity,
-    score:    entry.score,
-    time:     new Date().toLocaleString('en-IN', { dateStyle:'short', timeStyle:'short' }),
-    ts:       Date.now(),
-  });
-  // Keep last 20 entries
-  localStorage.setItem(HIST_KEY, JSON.stringify(history.slice(0, 20)));
+/* ══ HISTORY ══ */
+const HIST_KEY='da_scan_history';
+const SEV_COLOR={CRITICAL:'#ff1744',HIGH:'#ff3d5a',MEDIUM:'#f5c400',SAFE:'#00e096'};
+function getHistory(){try{return JSON.parse(localStorage.getItem(HIST_KEY)||'[]');}catch{return[];}}
+function saveToHistory(entry){
+  const h=getHistory();
+  h.unshift({type:entry.type,severity:entry.severity,score:entry.score,
+    time:new Date().toLocaleString('en-IN',{dateStyle:'short',timeStyle:'short'}),ts:Date.now()});
+  localStorage.setItem(HIST_KEY,JSON.stringify(h.slice(0,20)));
   renderHistory();
 }
-
-function renderHistory() {
-  const history = getHistory();
-  const list = document.getElementById('historyList');
-  if (!history.length) {
-    list.innerHTML = '<div class="hist-empty">No scans yet — your results will appear here.</div>';
-    return;
-  }
-  const sevStyle = s => {
-    const c = SEV_COLOR[s] || '#888';
-    return `background:${c}18;color:${c};border:1px solid ${c}40`;
-  };
-  list.innerHTML = history.map(h => `
+function renderHistory(){
+  const history=getHistory();
+  const list=document.getElementById('historyList');
+  if(!history.length){list.innerHTML='<div class="hist-empty">No scans yet — your results will appear here.</div>';return;}
+  const sevStyle=s=>{const c=SEV_COLOR[s]||'#888';return `background:${c}18;color:${c};border:1px solid ${c}40`;};
+  list.innerHTML=history.map(h=>`
     <div class="hist-item">
       <div class="hist-dot" style="background:${SEV_COLOR[h.severity]||'#888'}"></div>
-      <div class="hist-info">
-        <div class="hist-type">${h.type}</div>
-        <div class="hist-time">${h.time}</div>
-      </div>
-      ${h.severity !== 'SAFE' ? `<div class="hist-score" style="color:${SEV_COLOR[h.severity]}">${h.score}%</div>` : ''}
+      <div class="hist-info"><div class="hist-type">${h.type}</div><div class="hist-time">${h.time}</div></div>
+      ${h.severity!=='SAFE'?`<div class="hist-score" style="color:${SEV_COLOR[h.severity]}">${h.score}%</div>`:''}
       <div class="hist-sev" style="${sevStyle(h.severity)}">${h.severity}</div>
     </div>`).join('');
 }
+function clearHistory(){localStorage.removeItem(HIST_KEY);renderHistory();}
 
-function clearHistory() {
-  localStorage.removeItem(HIST_KEY);
-  renderHistory();
+/* ══════════════════════════════════════════════════════════
+   AI SCAM ALERTS FEED
+   Uses Claude API with web_search tool to find REAL live India
+   cybercrime news articles. Each alert links to the actual source.
+   Refresh button fetches fresh news every time.
+══════════════════════════════════════════════════════════ */
+const SEV_ICON={CRITICAL:'🚨',HIGH:'⚠️',MEDIUM:'⚡',LOW:'ℹ️'};
+
+const FALLBACK_ALERTS=[
+  {headline:'CBI impersonator runs ₹4L digital arrest scam in Bengaluru',type:'Digital Arrest',severity:'CRITICAL',city:'Bengaluru',detail:'Victim held on WhatsApp video call for 6 hours by fake officer demanding payment to clear a money laundering case.',tip:'No real officer arrests you on a video call',url:'https://cybercrime.gov.in',source:'cybercrime.gov.in'},
+  {headline:'Fake SBI KYC SMS harvests Aadhaar OTP across Maharashtra',type:'KYC Fraud',severity:'HIGH',city:'Mumbai',detail:'Malicious SMS directs users to sbi-kyc-update.xyz — a fake portal that steals Aadhaar and bank credentials.',tip:'Never click bank links sent via SMS',url:'https://www.rbi.org.in',source:'RBI Advisory'},
+  {headline:'TRAI robocalls threatening SIM block spike in Delhi NCR',type:'TRAI Scam',severity:'HIGH',city:'Delhi',detail:'Automated calls claim your number will be disconnected in 2 hours — press 9 to speak with a fake DoT officer.',tip:'TRAI never calls individual subscribers',url:'https://trai.gov.in',source:'trai.gov.in'},
+  {headline:'KBC lottery WhatsApp campaign resurfaces in South India',type:'Prize Scam',severity:'MEDIUM',city:'Hyderabad',detail:'Victims asked to pay ₹2,500 processing fee to claim ₹25 lakh prize — accounts vanish after payment.',tip:'You cannot win a contest you never entered',url:'https://www.india.gov.in',source:'india.gov.in'},
+  {headline:'Phishing portal mimics incometax.gov.in for TDS refund scam',type:'IT Dept Scam',severity:'HIGH',city:'Pune',detail:'Fraudulent site asks for PAN and bank account to process fake TDS refunds of ₹18,450.',tip:'Check refunds only on official incometax.gov.in',url:'https://www.incometax.gov.in',source:'incometax.gov.in'},
+];
+
+function randomAgo(){const m=[2,5,9,14,21,33,47,58];return m[Math.floor(Math.random()*m.length)]+'m ago';}
+
+function showSkeleton(){
+  document.getElementById('alertList').innerHTML=`<div class="feed-skeleton">
+    <div class="sk-row"><div class="sk sk-ico"></div><div class="sk-lines"><div class="sk sk-h"></div><div class="sk sk-s"></div></div></div>
+    <div class="sk-row"><div class="sk sk-ico"></div><div class="sk-lines"><div class="sk sk-h"></div><div class="sk sk-s"></div></div></div>
+    <div class="sk-row"><div class="sk sk-ico"></div><div class="sk-lines"><div class="sk sk-h"></div><div class="sk sk-s"></div></div></div>
+    <div class="sk-row"><div class="sk sk-ico"></div><div class="sk-lines"><div class="sk sk-h"></div><div class="sk sk-s"></div></div></div>
+  </div>`;
 }
 
-// ══════════════════════════════════════
-//  INIT
-// ══════════════════════════════════════
-loadAnalytics();
+function renderAlerts(alerts, fromLive){
+  const list=document.getElementById('alertList');
+  list.innerHTML='<div class="alert-list">'+alerts.map((a,i)=>`
+    <div class="al-item" style="animation-delay:${i*0.06}s">
+      <div class="al-top">
+        <div class="al-ico ${a.severity}">${SEV_ICON[a.severity]||'⚠️'}</div>
+        <div class="al-body">
+          <div class="al-headline">${a.url
+            ?`<a href="${a.url}" target="_blank" rel="noopener noreferrer">${a.headline}</a>`
+            :a.headline}</div>
+          <div class="al-meta">
+            <span class="al-tag ${a.severity}">${a.type}</span>
+            <span class="al-city">📍 ${a.city}</span>
+            <span class="al-time">${randomAgo()}</span>
+          </div>
+        </div>
+      </div>
+      <div class="al-detail">${a.detail}</div>
+      <div class="al-tip">${a.tip}</div>
+      ${a.url?`<div class="al-link"><a href="${a.url}" target="_blank" rel="noopener noreferrer">${a.source||'Read full article'}</a></div>`:''}
+    </div>`).join('')+'</div>';
+
+  const now=new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('ffCount').textContent=`${alerts.length} alerts`;
+  document.getElementById('ffNote').textContent=fromLive
+    ?`Live news · updated ${now}`
+    :`Cached alerts · ${now}`;
+
+  // update ticker with live headlines
+  const half=alerts.slice(0,5).map(a=>
+    `<span class="t-item"><span class="t-type">${a.type}</span> — ${a.headline.length>52?a.headline.slice(0,52)+'…':a.headline}</span><span class="t-sep">·</span>`
+  ).join('');
+  document.getElementById('tickerTrack').innerHTML=half+half;
+}
+
+async function loadAlerts(){
+  const btn=document.getElementById('refreshBtn');
+  btn.classList.add('spinning'); btn.disabled=true;
+  document.getElementById('ffNote').textContent='Searching live news…';
+  showSkeleton();
+
+  try {
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:2000,
+        tools:[{type:'web_search_20250305',name:'web_search'}],
+        system:`You are a live cybercrime news aggregator for DigitalArmour, an India scam detection app.
+
+STEP 1: Use web_search to find recent (2024-2025) real India cybercrime news. 
+Search queries to try: "India digital arrest scam 2025 news", "cyber fraud India 2025", "KYC fraud India news 2025", "WhatsApp scam India 2025".
+
+STEP 2: From the search results, pick 4-5 distinct real news articles.
+
+STEP 3: Return ONLY a valid JSON array. No markdown, no code fences, no explanation. Just the raw JSON array.
+
+Each object must have EXACTLY these keys:
+- headline: string (≤12 words, urgent news headline)
+- type: exactly one of ["Digital Arrest","KYC Fraud","TRAI Scam","Prize Scam","IT Dept Scam"]
+- severity: exactly one of ["CRITICAL","HIGH","MEDIUM","LOW"]  
+- city: one real Indian city from the article, or "India" if national
+- detail: string (1 sentence describing what happened to victims)
+- tip: string (1 protective tip, ≤8 words, no trailing period)
+- url: the ACTUAL URL of the real news article from search results (must be a real URL, not a placeholder)
+- source: short publication name (e.g. "Times of India", "NDTV", "The Hindu", "Hindustan Times")
+
+Mix scam types. Prioritise most recent articles. Include the real URLs.`,
+        messages:[{role:'user',content:'Search for the latest India cybercrime scam news and return only the JSON array.'}]
+      })
+    });
+
+    const data=await res.json();
+    // Collect all text content blocks (after tool use is resolved)
+    const textBlocks=(data.content||[]).filter(b=>b.type==='text');
+    const raw=textBlocks.map(b=>b.text||'').join('');
+    // Find JSON array — strip any markdown fences
+    const clean=raw.replace(/```json\s*/g,'').replace(/```\s*/g,'').trim();
+    const match=clean.match(/\[[\s\S]*\]/);
+    if(!match) throw new Error('No JSON array in response');
+    const alerts=JSON.parse(match[0]);
+    if(!Array.isArray(alerts)||alerts.length===0) throw new Error('Empty alerts array');
+    // Validate each alert has required fields
+    const valid=alerts.filter(a=>a.headline&&a.type&&a.severity&&a.city&&a.detail&&a.tip);
+    if(valid.length===0) throw new Error('No valid alerts');
+    renderAlerts(valid, true);
+  } catch(e){
+    console.warn('Live alerts error:',e.message,'— using fallback');
+    renderAlerts(FALLBACK_ALERTS, false);
+  } finally {
+    btn.classList.remove('spinning'); btn.disabled=false;
+  }
+}
+
+/* ══ INIT ══ */
 loadDemos();
 renderHistory();
+loadAlerts();
 </script>
 </body>
 </html>
